@@ -1,0 +1,3 @@
+# Aprendizados da semana
+
+Hellooooo, esta foi nossa primeira semana prática de aula com aulas e exercícios sobre o **terminal** e **git/github**. Na aula sobre terminal aprendemos sobre os principais comandos e realizamos um exercício muito bacana envolvendo a resolução de um mistério através do terminal. Na aula de git e github aprendemos como funciona o processo de fazer um PR e hoje estamos fazendo nosso primeiro mino projeto.
