@@ -23,12 +23,25 @@ function retornaNumerosParesElevadosADois(array) {
 
 // EXERCÍCIO 03
 function retornaNumerosPares(array) {
-
+  const numeros = [];
+  for (const numero of array) {
+    if (numero % 2 === 0) {
+      numeros.push(numero);
+    }
+  }
+  return numeros;
 }
 
 // EXERCÍCIO 04
 function retornaMaiorNumero(array) {
-
+  let maiorNumero = 0
+  for(let numero of array){
+    if(numero > maiorNumero){
+      maiorNumero = numero
+      console.log(maiorNumero)
+    }
+  }
+  return maiorNumero
 }
 
 // EXERCÍCIO 05
