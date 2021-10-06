@@ -1,12 +1,25 @@
 // EXERCÍCIO 01
 function inverteArray(array) {
+  const novoArray = []
+  for (let i= array.length-1; i >=0; i--){
 
+    novoArray.push(array[i])
+    console.log(novoArray)
+  }
+  return novoArray
 }
 
 // EXERCÍCIO 02
 function retornaNumerosParesElevadosADois(array) {
-
+  const numeros = []
+  for (let numero of array) {
+    if (numero % 2 === 0){
+      numeros.push(numero*numero)
+    }
+  }
+    return numeros;
 }
+
 
 // EXERCÍCIO 03
 function retornaNumerosPares(array) {
