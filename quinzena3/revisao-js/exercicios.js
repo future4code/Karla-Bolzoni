@@ -46,19 +46,35 @@ function retornaMaiorNumero(array) {
 
 // EXERCÍCIO 05
 function retornaQuantidadeElementos(array) {
-  
+  return array.length
+
 }
 
 // EXERCÍCIO 06
 function retornaExpressoesBooleanas() {
+   const booleano1 = true;
+   const booleano2 = false;
+   const booleano3 = !booleano2;
+   const booleano4 = !booleano3;
 
+   const resposta = []
+
+   if (booleano1 && booleano2 && !booleano4){
+     resposta.push(booleano1, booleano2, !booleano4);
+   }
+   console.log(resposta)
 }
 
 // EXERCÍCIO 07
 function retornaNNumerosPares(n) {
-
+  let numerosPares = []
+  for (let i = 0; numerosPares.length < n; i++) {
+    if (i % 2 == 0) {
+      numerosPares.push(i);
+    }
+  }
+  return numerosPares;
 }
-
 // EXERCÍCIO 08
 function checaTriangulo(a, b, c) {
   // return 'Escaleno'
