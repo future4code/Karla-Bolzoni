@@ -130,7 +130,7 @@ function segundoMaiorEMenor(array) {
     if (numero > maiorNumero) {
       maiorNumero = numero
     }
-    if(numero < menorNumero){
+    if (numero < menorNumero) {
       menorNumero = numero
     }
   }
@@ -138,7 +138,7 @@ function segundoMaiorEMenor(array) {
     if (numero > segundoMaiorNumero && numero < maiorNumero) {
       segundoMaiorNumero = numero
     }
-    if(numero < segundoMenorNumero && numero > menorNumero){
+    if (numero < segundoMenorNumero && numero > menorNumero) {
       segundoMenorNumero = numero
     }
   }
@@ -148,6 +148,19 @@ function segundoMaiorEMenor(array) {
 // EXERCÍCIO 11
 function ordenaArray(array) {
 
+  let length = array.length
+  for (let i = 0; i < length; i++) {
+    for (let j = 0; j < (length - i - 1); j++) {
+      if (array[j] > array[j + 1]) {
+        let tmp = array[j]
+        array[j] = array[j + 1]
+        array[j + 1] = tmp
+      }
+
+    }
+  }
+
+  return array
 }
 
 // EXERCÍCIO 12
@@ -195,7 +208,7 @@ function anonimizaPessoa(pessoa) {
 // EXERCÍCIO 16A
 function maioresDe18(arrayDePessoas) {
   const filtraAdulto = (item) => {
-    if(item.idade >= 18){
+    if (item.idade >= 18) {
       return true
     }
   }
@@ -207,51 +220,130 @@ function maioresDe18(arrayDePessoas) {
 // EXERCÍCIO 16B
 function menoresDe18(arrayDePessoas) {
   const filtraAdolescente = (item) => {
-    if(item.idade < 18){
+    if (item.idade < 18) {
       return true
     }
   }
-  const novoArray = arrayDePessoas.filter(filtraAdolescente)
-  return novoArray
 
+  return arrayDePessoas.filter(filtraAdolescente)
 }
 
 // EXERCÍCIO 17A
 function multiplicaArrayPor2(array) {
+  const transformaArray = (item) => {
+    return item * 2
+  }
 
+  return array.map(transformaArray)
 }
 
 // EXERCÍCIO 17B
 function multiplicaArrayPor2S(array) {
+  const transformaArrayString = (item) => {
+    const multiplica = item * 2
+    return multiplica.toString()
+  }
 
+  return array.map(transformaArrayString)
 }
 
 // EXERCÍCIO 17C
 function verificaParidade(array) {
 
+  const verificaNumero = (item) => {
+    if (item % 2 === 0) {
+      return `${item} é par`
+    } else {
+      return `${item} é ímpar`
+    }
+  }
+
+  return array.map(verificaNumero)
 }
 
 // EXERCÍCIO 18A
 function retornaPessoasAutorizadas(pessoas) {
+  const verificaPessoas = (item) => {
+    if (item.altura >= 1.5 && item.idade > 14 && item.idade <= 60) {
+      return true
+    }
+  }
 
+  return pessoas.filter(verificaPessoas)
 }
 
 // EXERCÍCIO 18B
 function retornaPessoasNaoAutorizadas(pessoas) {
+  const verificaPessoas = (item) => {
+    if (!(item.altura >= 1.5 && item.idade > 14 && item.idade <= 60)) {
+      return true
+    }
+  }
 
+  return pessoas.filter(verificaPessoas)
 }
 
 // EXERCÍCIO 19A
 function ordenaPorNome(consultasNome) {
 
+  function ordenaArray(a, b) {
+    if (a.nome < b.nome) {
+      return -1
+    }
+    if (a.nome > b.nome) {
+      return 1
+    }
+    return 0
+  }
+
+  return consultasNome.sort(ordenaArray)
 }
 
 // EXERCÍCIO 19B
 function ordenaPorData(consultasData) {
 
+  const ordenaArrayPorData = (a, b) => {
+
+    const dataSeparadaA = a.dataDaConsulta.split('/')
+    const dataSeparadaB = b.dataDaConsulta.split('/')
+
+    a = new Date(dataSeparadaA[2], dataSeparadaA[1], dataSeparadaA[0])
+    b = new Date(dataSeparadaB[2], dataSeparadaB[1], dataSeparadaB[0])
+
+    if (a < b) {
+      return -1
+    }
+    if (a > b) {
+      return 1
+    }
+    return 0
+  }
+  return consultasData.sort(ordenaArrayPorData)
 }
 
 // EXERCÍCIO 20
 function calculaSaldo(contas) {
+  const somaCompras = (item) => {
+    let soma = 0
+    const listaValorCompra = item.compras
+    for (let i = 0; i < listaValorCompra.length; i++) {
+      soma += listaValorCompra[i]
+
+      return soma
+    }
+
+  }
+
+  const atualizaSaldo = (item) => {
+    let total = 0
+    const saldo = item.saldoTotal
+    for (let i = 0; i < saldoTotal.length; i++){
+      total = saldo - somaCompras(item)
+
+      return total
+    }
+
+  }
+  return atualizaSaldo()
 
 }
