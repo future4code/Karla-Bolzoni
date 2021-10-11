@@ -2,10 +2,9 @@
 function inverteArray(array) {
   const novoArray = []
   for (let i = array.length - 1; i >= 0; i--) {
-
     novoArray.push(array[i])
-    console.log(novoArray)
   }
+
   return novoArray
 }
 
@@ -17,25 +16,20 @@ function retornaNumerosParesElevadosADois(array) {
       numeros.push(numero * numero)
     }
   }
-  return numeros;
-}
-/*Táa, no exercício 2 a primeira coisa que ele pede é escreva uma função que recebe um array de números, daí essa parte já ta escrita no código: function retornaNumerosParesElevadosADois(array) {}
-Dai depois pede:
-- retorna um array (criar uma váriavel que vai ser esse array)
-- números pares (tu vai percorrer e verificar quais são pares - aqui é um LOOP e uma CONDIÇÃO)
-- elevados a 2 (aqui tá falando o que tu vai fazer com os números pares que tu achou ali em cima)
 
-*/
+  return numeros
+}
 
 // EXERCÍCIO 03
 function retornaNumerosPares(array) {
-  const numeros = [];
+  const numeros = []
   for (const numero of array) {
     if (numero % 2 === 0) {
-      numeros.push(numero);
+      numeros.push(numero)
     }
   }
-  return numeros;
+
+  return numeros
 }
 
 // EXERCÍCIO 04
@@ -44,16 +38,15 @@ function retornaMaiorNumero(array) {
   for (let numero of array) {
     if (numero > maiorNumero) {
       maiorNumero = numero
-      console.log(maiorNumero)
     }
   }
+
   return maiorNumero
 }
-//retornaMaiorNumero([5,9,12])
+
 // EXERCÍCIO 05
 function retornaQuantidadeElementos(array) {
   return array.length
-
 }
 
 // EXERCÍCIO 06
@@ -72,8 +65,8 @@ function retornaExpressoesBooleanas() {
   resposta.push(!(booleano1) && !(booleano3) || (!booleano4 && booleano3 && booleano3))
 
   return resposta
-
 }
+
 // EXERCÍCIO 07
 function retornaNNumerosPares(n) {
   let numerosPares = []
@@ -82,8 +75,10 @@ function retornaNNumerosPares(n) {
       numerosPares.push(i);
     }
   }
+
   return numerosPares;
 }
+
 // EXERCÍCIO 08
 function checaTriangulo(a, b, c) {
   if (a === b && a === c) {
@@ -142,8 +137,8 @@ function segundoMaiorEMenor(array) {
       segundoMenorNumero = numero
     }
   }
-  return [segundoMaiorNumero, segundoMenorNumero]
 
+  return [segundoMaiorNumero, segundoMenorNumero]
 }
 // EXERCÍCIO 11
 function ordenaArray(array) {
@@ -171,6 +166,7 @@ function filmeFavorito() {
     diretor: "David Frankel",
     atores: ["Meryl Streep", "Anne Hathaway", "Emily Blunt", "Stanley Tucci"]
   }
+
   return filmeFavorito
 }
 
@@ -183,6 +179,7 @@ function imprimeChamada() {
     atores: ["Meryl Streep", "Anne Hathaway", "Emily Blunt", "Stanley Tucci"]
   }
   let frase = `Venha assistir ao filme ${filmeFavorito.nome}, de ${filmeFavorito.ano}, dirigido por ${filmeFavorito.diretor} e estrelado por ${filmeFavorito.atores[0]}, ${filmeFavorito.atores[1]}, ${filmeFavorito.atores[2]}, ${filmeFavorito.atores[3]}.`
+
   return frase
 }
 
@@ -194,6 +191,7 @@ function criaRetangulo(lado1, lado2) {
     perimetro: (2 * (lado1 + lado2)),
     area: (lado1 * lado2)
   }
+
   return objetoRetangulo
 }
 
@@ -202,7 +200,6 @@ function anonimizaPessoa(pessoa) {
   pessoa.nome = "ANÔNIMO"
 
   return pessoa
-
 }
 
 // EXERCÍCIO 16A
@@ -213,8 +210,7 @@ function maioresDe18(arrayDePessoas) {
     }
   }
 
-  const novoArray = arrayDePessoas.filter(filtraAdulto)
-  return novoArray
+  return arrayDePessoas.filter(filtraAdulto)
 }
 
 // EXERCÍCIO 16B
@@ -318,32 +314,23 @@ function ordenaPorData(consultasData) {
     }
     return 0
   }
+
   return consultasData.sort(ordenaArrayPorData)
 }
 
 // EXERCÍCIO 20
 function calculaSaldo(contas) {
+
   const somaCompras = (item) => {
     let soma = 0
     const listaValorCompra = item.compras
     for (let i = 0; i < listaValorCompra.length; i++) {
       soma += listaValorCompra[i]
-
-      return soma
     }
 
+    item.saldoTotal -= soma
+
+    return item
   }
-
-  const atualizaSaldo = (item) => {
-    let total = 0
-    const saldo = item.saldoTotal
-    for (let i = 0; i < saldoTotal.length; i++){
-      total = saldo - somaCompras(item)
-
-      return total
-    }
-
-  }
-  return atualizaSaldo()
-
+  return contas.map(somaCompras)
 }
