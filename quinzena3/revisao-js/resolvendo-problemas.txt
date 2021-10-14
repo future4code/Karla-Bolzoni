@@ -1,0 +1,15 @@
+1. Quais são os 7 passos fundamentais para a resolução de problemas e como eles podem nos ajudar a solucionar nossos desafios de programação?
+
+1. Ter atenção ao enunciado: ajuda a identificar o contexto em que estamos e qual o problema que temos para resolver;
+
+2. Retirar informações relevantes: ajuda a encontrar as palavras chaves para que a gente consiga entender quais variáveis(substantivo) vamos utilizar, quais funções(verbos) precisamos criar e qual resultado vamos entregar;
+
+3. Pensar entradas e saídas: quais dados que vamos receber e como e quais dados vamos entregar e como;
+
+4. Esquema visual: um fluxograma para enxergar de forma visual qual caminho devemos percorrer para resolver o problema, quais os passos serão criados através do algorítmo;
+
+5. Fazer um código feio: colocar em prática as possíveis soluções pensadas;
+
+6. Testar o código: fazer as chamadas de função para conferir se as funções e o código escrito traz o resultado esperado, caso não funcione é feito o debugger revisando nomes de variáveis, lógica e fazendo  as devidas correções.
+
+7. Refatorar: fazer a conferência se foram aplicadas as boas práticas ao código, como variáveis com bons nomes, funções realizando operações de forma separada.
