@@ -4,54 +4,148 @@ body{
     display: flex;
     flex-direction: column;
     min-height: 100%;
-
 }
+
+/* cabeçalho */
+
 .cabecalho {
     background-color: #F5BFB5;
     overflow: hidden;
 }
 
 .cabecalho a {
-    float: left;
-    display: block;
     color: #573E39;
-    text-align: center;
+    display: block;
+    float: left;
     padding: 14px 16px;
+    text-align: center;
     text-decoration: none;
-  }
+}
 
-.cabecalho p, h1{
-      text-align: center;
-      color:#573E39
-  }
+.texto-cabecalho{
+    color:black;
+    margin: auto;
+    text-align: center;
+}
 
 .cabecalho a:hover{
     background-color: white;
-  color: black;
-  transition: 0.5s;
-
+    color: black;
+    transition: 0.5s;
 }
-
 
 .rodape {
     background-color: #F5BFB5;
     padding: 10px;
-    margin-top: auto;
+    margin-top: 100px;
     
-  }
+}
+
+.redes-sociais{
+    margin: 0 0 0 35em;
+}
+
 .logo-rede-social{
     width: 50px;
     height: 50px;
 }
 
-tr{
-    background-color: #F5DFD0;
-}
-
-td{
-    text-align: center;
+/* tabelas */
+th{
+    background-color: #F5BFB5;
+    color: #573E39; 
+    padding: 0.5em;
+    border-radius: 6px 6px 6px 6px;
 }
 
 #table-id{
     margin: 30px 0 30px 0;
+}
+
+table{
+    margin: auto;
+    background-color: rgba(0, 0, 0, 0.904);
+    color: white;
+    border-radius: 7px 7px 7px 7px;
+    text-align: center;
+}
+
+/* campo de filtro */
+#campo-pesquisa{
+    background-color: #f5bfb58e;
+    border-radius: 7px 7px 7px 7px;
+    margin: auto;
+
+}
+
+#btn-filtro{
+    background:#F5BFB5;
+    border:none;
+    border-radius: 0px 7px 7px 0px;
+    color: #573E39;
+    font-size: large;
+    font-weight:bold;
+    width:70px;
+}
+
+#filtra-texto{
+    background-color: transparent;
+    border: none;
+    border-radius: 10px 10px 10px 10px;
+    font-size: large;
+    text-align: center;
+}
+
+/* página inicial */
+
+#menu-home{
+    margin:auto
+}
+
+#menu-home a{
+    color: #573E39;
+    display: block;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+}
+
+#menu-home a:hover{
+    background-color: #573E39;
+    border-radius: 7px 7px 7px 7px;
+    color: white;
+    transition: 0.3s;
+}
+
+#texto-home{
+    color: #47332f;
+    font-size: large;
+    font-weight: bold;
+    margin: auto;
+    padding: 10px;
+}
+
+#info-home{
+    margin: auto;
+}
+
+#info-home img{
+    width: 210px;
+    height: 170px;
+    border-radius: 50%;
+    margin: 50px;
+}
+
+/* formulários */
+
+form{
+    display: inline-block;
+    width: 160px;
+}
+
+.campo-form{
+    margin: 10px;
+}
+.form-add{
+    margin: 10px;
 }
