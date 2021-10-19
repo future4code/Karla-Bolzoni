@@ -53,6 +53,7 @@ div img {
 .container {
     height: 500px;
     text-align: center;
+    padding-top: 20px;
 }
 
 .icone {
@@ -69,8 +70,12 @@ div img {
 #container-de-descricao {
     background-color: #2274a5;
     color: white;
+    /* padding: 10px; aparece os numeros lista*/
 }
 
+.texto-descricao{
+    padding-top: 90px;
+}
 #container-de-descricao>ol {
     padding: 15px 0px;
 }
