@@ -112,6 +112,7 @@ div:last-child {
 table {
     width: 60%;
     text-align: center;
+    margin: auto;
 }
 
 
@@ -130,7 +131,7 @@ td button {
 }
 
 
-#back-button {
+#style-button {
     background-color: white;
     width: 100px;
     height: 20px;
@@ -140,9 +141,13 @@ td button {
     color: black;
 }
 
-#back-button:hover {
+#style-button:hover {
     background-color: #635a3d
 }
 .pagina-compras{
     font-family: 'Roboto', sans-serif;
+}
+
+.button-back{
+    padding: 10% 50% 0;
 }
