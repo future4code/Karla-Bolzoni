@@ -3,32 +3,27 @@
     padding: 0;
 }
 
-.container{
-    display:grid;
-    flex-direction: column;
-    overflow: auto;
-}
-
+/* CABEÇALHO */
 header{
+    align-items: center;
     background-color: mediumvioletred;
     display: flex;
+    font-weight: bold;
+    height: 50px;
     justify-content: space-between;
     padding: 0 10px;
-    height: 50px;
-    align-items: center;
-    font-weight: bold;
 }
 
-#container-main{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 2fr 2fr;
-    height: 90vh;
-    row-gap: 10px;
-    justify-items: center;
-    height: 100vh;
-    
+header img{
+    height: 20px;
+    width: 20px;
+    padding-right: 10px;
 }
+button{
+    padding: 0 10px
+}
+
+/* MENU LATERAL */
 nav{
     display: grid;
     grid-row: 1/4;
@@ -38,31 +33,36 @@ nav{
     padding-top: 10px;
 }
 
-
-
-
-.menu-arrow{
-    display: flex;
-    flex-direction: column;
-    text-align: right;
-    padding-right: 5px;
-    padding-top: 10px;
-}
-footer{
-    background-color: mediumvioletred;
-    height: 50px;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    align-items: center;
-}
-
-
-
-header img{
+.icon-formato{
     height: 20px;
     width: 20px;
-    padding-right: 10px;
+    padding-right: 10px;   
+}
+
+li{
+    position: relative;
+}
+
+.icon-formato1{
+    position: absolute;
+    right: 10px;
+}
+
+/* CONTEÚDO PRINCIPAL */
+.container{
+    display:grid;
+    flex-direction: column;
+    overflow: auto;
+}
+
+#container-main{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 2fr 2fr;
+    height: 90vh;
+    row-gap: 10px;
+    justify-items: center;
+    height: 100vh;   
 }
 
 .card-galeria{
@@ -85,22 +85,24 @@ header img{
     padding-top: 0;
 }
 
+
 h3{
     text-align: center;
     padding: 10px;
 }
-.icon-formato{
-    height: 20px;
-    width: 20px;
-    padding-right: 10px;
-    
-}
-li {
-    position: relative;
+
+
+/* RODAPÉ */
+footer{
+    background-color: mediumvioletred;
+    height: 50px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    align-items: center;
 }
 
-.icon-formato1{
-    position: absolute;
-    right: 10px;
-}
+
+
+
 
