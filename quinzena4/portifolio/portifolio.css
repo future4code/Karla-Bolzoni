@@ -18,20 +18,17 @@
 }
 
 #imagem-perfil{
-    /* display: inline-block; */
-    padding-top: 40px;
-    margin-left: 100px;
     margin-top: 50px;
     background-color: white;
-    padding-left: 40px;
-    padding-right: 40px;
-    padding-bottom: 80px;
-    margin-bottom: 30px;
-    box-shadow: 3px 3px 1em  gray 
+    margin-bottom: 50px;
+    box-shadow: 3px 3px 5em  gray;
+    height: 390px;
+    border-radius: 50%; 
 }
 
 #descricao-sobre-mim{
-    font: 22px "opensans-bold",sans-serif;
+    font-family:"Trebuchet MS","Lucida Sans Unicode","Lucida Grande","Lucida Sans",Arial,sans-serif;
+    font-size: 20px;    
     text-align: center;
     border-radius: 10px;
     border-color: gray;
@@ -62,7 +59,10 @@
 
 
 .softs{
-    background-color: #C3CEDA;
+    background-color: #efe1bd;
+    display:flex;
+    flex-direction: column;
+
 }
 
 #imagem-perfil img{
@@ -71,8 +71,9 @@
 }
 
 .icone{
-    display: inline-block;
-    margin: 30px
+    display: flex;
+    margin: 30px;
+    align-items: center
 }
 
 .center{
@@ -90,7 +91,44 @@
 
 .rodape{
     display: flex;
-    justify-content: space-around;
-    padding-top: 50px;
-    padding-bottom: 50px;
+    justify-content: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.cabecalho {
+    background-color: #efe1bd;
+    overflow: hidden;
+}
+
+.cabecalho a {
+    color: #573E39;
+    display: block;
+    float: right;
+    padding: 14px 16px;
+    text-align: center;
+    text-decoration: none;
+}
+.cabecalho a:hover{
+    background-color: white;
+    color: black;
+    transition: 0.5s;
+}
+
+#ensino{
+    height: 500px;
+}
+
+#titulo-ensino{
+    padding-top: 20px;
+}
+
+.item-a{
+    text-decoration: none;
+    font-family:"Trebuchet MS","Lucida Sans Unicode","Lucida Grande","Lucida Sans",Arial,sans-serif;
+    font-size: 20px;
+    color: black;
+}
+.redes-sociais{
+    padding: 10px;
 }
