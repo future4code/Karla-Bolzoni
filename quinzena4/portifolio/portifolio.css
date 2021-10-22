@@ -2,13 +2,7 @@
     margin: 0;
     padding: 0;
 }
-.pagina-projetos {
-    display: inline;
-    background-color: tomato;
-    color: white;
-    margin: 10px;
 
-}
 
 #sobre-mim{
     display: flex;
@@ -44,31 +38,35 @@
 
 }
 
-/* #teste{
-    display: flex;
-    text-align: center;
-    margin:10px
-} */
-
-
-#ensino{
-    background-color: goldenrod;
-}
-
-#profissional{
-    background-color: hotpink;
-}
 
 .galeria-projetos{
-    background-color: indigo;
+    background-color: #efe1bd;
+    display: flex;
+    flex-direction: column;
+    padding:10px;  
+    align-items: center; 
 }
+.card-projeto{
+    background-color: white;
+    color: black;
+    font: 22px "opensans-bold",sans-serif;
+    box-shadow: 3px 3px 1em  gray; 
+    height: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    margin: 20px;
+
+}
+
 
 .softs{
     background-color: #C3CEDA;
 }
 
 #imagem-perfil img{
-    width: 200px; 
+    width: 250px; 
     height: 250px;
 }
 
@@ -80,5 +78,19 @@
 .center{
     display: flex;
     justify-content: space-around;
+    margin: 50px;
 }
 
+#container-trajetoria{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin:50px;
+}
+
+.rodape{
+    display: flex;
+    justify-content: space-around;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
