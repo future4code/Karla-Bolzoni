@@ -3,7 +3,32 @@
     padding: 0;
 }
 
+/* CABEÇALHO */
+.cabecalho a {
+    color: #573E39;
+    display: block;
+    float: right;
+    padding: 14px 16px;
+    text-align: center;
+    text-decoration: none;
+}
+.cabecalho a:hover{
+    background-color: white;
+    color: black;
+    transition: 0.5s;
+}
 
+
+/* MAIN */
+
+header{
+    margin-top:0;
+    position: -webkit-sticky;
+    position: sticky;
+    background-color: #efe1bd;
+    overflow: hidden;
+    }
+    
 #sobre-mim{
     display: flex;
     justify-content: space-around;
@@ -25,6 +50,8 @@
     box-shadow: 3px 3px 5em  gray;
     height: 390px;
     border-radius: 50%; 
+    width: 250px; 
+    height: 250px;
 }
 
 #descricao-sobre-mim{
@@ -33,7 +60,6 @@
     text-align: justify;
     border-radius: 10px;
     border-color: gray;
-
 }
 
 
@@ -44,6 +70,7 @@
     padding:10px;  
     align-items: center; 
 }
+
 .card-projeto{
     background-color: white;
     color: black;
@@ -55,7 +82,6 @@
     align-items: center;
     width: 300px;
     margin: 20px;
-
 }
 
 
@@ -66,10 +92,6 @@
 
 }
 
-#imagem-perfil img{
-    width: 250px; 
-    height: 250px;
-}
 
 .icone{
     display: flex;
@@ -90,30 +112,9 @@
     margin:50px;
 }
 
-.rodape{
-    display: flex;
-    justify-content: center;
-    padding-top: 5px;
-    padding-bottom: 5px;
-}
 
 
-
-.cabecalho a {
-    color: #573E39;
-    display: block;
-    float: right;
-    padding: 14px 16px;
-    text-align: center;
-    text-decoration: none;
-}
-.cabecalho a:hover{
-    background-color: white;
-    color: black;
-    transition: 0.5s;
-}
-
-#ensino{
+#trajetoria{
     height: 300px;
 }
 
@@ -127,17 +128,17 @@
     font-size: 20px;
     color: black;
 }
+
+.item-a:hover{
+    font-size:1.2em;
+    color: rgba(49, 26, 26, 0.767);
+    transition-timing-function: ease-in-out;;
+}
 .redes-sociais{
     padding: 10px;
 }
-header{
-margin-top:0;
-position: -webkit-sticky;
-position: sticky;
-background-color: #efe1bd;
-overflow: hidden;
-}
 
+/* página de contato */
 form {
     margin: 0 auto;
     width: 400px;
@@ -155,12 +156,54 @@ form {
     width: 90px;
     text-align: right;
   }
-  input, textarea {
+input, textarea {
     font: 1em sans-serif;
-     width: 300px;
-  }
+    width: 300px;
+}
 
-  .button{
-      padding-left: 90px;
-      text-align: center;
-  }
+.button{
+    padding-left: 90px;
+    text-align: center;
+}
+
+  /* página de projetos */
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.container img {
+    max-width:400px;
+    max-height:550px;
+    width: auto;
+    height: auto;
+    box-shadow: 3px 3px 2em  gray;
+}
+    
+.projeto1{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    border: 1px solid #CCC;
+    border-radius: 1em;
+    height: 611px;      
+}
+
+.projeto1 div{
+    text-align: center;
+    padding: 10px;
+    margin: auto;
+}
+
+/* RODAPÉ */
+.rodape{
+    display: flex;
+    justify-content: center;
+    padding-top: 5px;
+    align-items: center;
+    position:absolute;
+    width:100%;
+}
