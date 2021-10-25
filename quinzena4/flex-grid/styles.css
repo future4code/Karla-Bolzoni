@@ -9,7 +9,7 @@ header{
     background-color: mediumvioletred;
     display: flex;
     font-weight: bold;
-    height: 50px;
+    height: 40px;
     justify-content: space-between;
     padding: 0 10px;
 }
@@ -52,7 +52,6 @@ li{
 .container{
     display:grid;
     flex-direction: column;
-    overflow: auto;
 }
 
 #container-main{
@@ -62,7 +61,7 @@ li{
     height: 90vh;
     row-gap: 10px;
     justify-items: center;
-    height: 100vh;   
+    height: 70vh;   
 }
 
 .card-galeria{
@@ -72,6 +71,7 @@ li{
     box-shadow: 3px 3px 2em  darkgray;
     width: 200px;
     margin-top: 10px;
+
 }
 .card-galeria>img{
     width: 200px;
@@ -95,7 +95,7 @@ h3{
 /* RODAPÉ */
 footer{
     background-color: mediumvioletred;
-    height: 50px;
+    height: 40px;
     display: flex;
     align-items: flex-end;
     justify-content: center;
