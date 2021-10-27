@@ -10,7 +10,8 @@
 }
 
 header{
-  background-color: rgb(226, 162, 43);
+  background-color: black;
+  color: red;
   align-items: center;
   display: flex;
   font-weight: bold;
@@ -19,12 +20,18 @@ header{
   padding: 0 10px;
 }
 
+.logo-texto{
+  font-size: 25px;
+}
+
 input{
   width: 90px;
   height: 30px;
   text-align: center;
   margin: 20px 0;
   color: gray;
+  border: none;
+  border-radius: 10px;
 
 }
 
@@ -32,9 +39,11 @@ main{
   display: grid;
   height: 50vw;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr ;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
   justify-items: center;
   align-items: center;
+  row-gap: 10px;
+  column-gap: 10px;
   
 }
 
@@ -46,7 +55,13 @@ main{
   background-color: white;
   height: 260px;
   border: 0.5px solid gray;
+  margin-top: 20px;
+  transition: 0.3s;
 
+}
+
+.card-produto:hover{
+  cursor: pointer;
 }
 
 .imagem-card{
@@ -59,12 +74,12 @@ main{
   text-decoration: none;
   color:inherit;
   transition: 0.3s;
+  text-align: center;
 }
 
 .titulo-card:hover{
   opacity: 4;
-  color: gray;
-  
+  color: gray;  
 }
 
 
@@ -87,13 +102,13 @@ video{
 }
 
 .botao-voltar{
-  border-radius: 4px;
+  border-radius: 10px;
   padding: 10px 15px;
-  background-color: rgb(226, 162, 43);
+  background-color: black;
   cursor: pointer;
   text-decoration: none;
   margin: 10px;
-  color: black;
+  color: white;
   opacity: 0.9;
   transition: 0.3s;
 }
@@ -105,11 +120,11 @@ video{
 
 
 footer{
-  background-color:gray;
+  background-color:black;
   display: grid;
   justify-content: center;
   align-items: center;
   height: 50px;
-  font-weight: bolder;
   color: white;
 }
+
