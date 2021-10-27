@@ -3,12 +3,7 @@
   padding:0;
 }
 
-.container{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
+/* CABEÇALHO */
 header{
   background-color: black;
   color: red;
@@ -32,8 +27,14 @@ input{
   color: gray;
   border: none;
   border-radius: 10px;
-
 }
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* CONTEÚDO GERAL-CORPO */
 
 main{
   display: grid;
@@ -43,8 +44,7 @@ main{
   justify-items: center;
   align-items: center;
   row-gap: 10px;
-  column-gap: 10px;
-  
+  column-gap: 10px;  
 }
 
 
@@ -56,12 +56,6 @@ main{
   height: 260px;
   border: 0.5px solid gray;
   margin-top: 20px;
-  transition: 0.3s;
-
-}
-
-.card-produto:hover{
-  cursor: pointer;
 }
 
 .imagem-card{
@@ -86,8 +80,10 @@ main{
 
 /* página detalhes do video */
 .card-video{
-  width:700px
-
+  width:700px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .container-video{
