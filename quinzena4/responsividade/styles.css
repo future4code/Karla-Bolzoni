@@ -57,27 +57,28 @@ main{
 }
 
 
-.card-produto{
+.card-filme{
   display: flex;
   flex-direction: column;
   width: 80%;
-  background-color: white;
   height: 80%;
   border: 0.5px solid gray;
-  margin-top: 20px;
+  justify-content: space-between
+
 }
 
 .imagem-card{
   width: 100%;
-  height: 70%;
+  height: 80%;
 }
 
 .titulo-card{
-  padding: 10px 0;
   text-decoration: none;
   color:inherit;
   transition: 0.3s;
   text-align: center;
+  padding-bottom: 30px;
+
 }
 
 .titulo-card:hover{
@@ -99,16 +100,16 @@ main{
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  height: 80vw;
+  height: 100%;
   align-items: center;
   margin: 10px
 }
-video source{
-  width: 80%;
+video {
+  width: 90%;
 }
 
 .button{
-  margin: 10px;
+  margin: 20px;
 }
 
 .botao-voltar{
