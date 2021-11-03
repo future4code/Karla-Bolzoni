@@ -1,0 +1,172 @@
+/** 
+  *
+  *  ESTILOS GERAIS 
+  *
+  **/
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+h2 {
+    background-color: #fe7e02;
+    padding: 10px 5px 10px 5px;
+    color: white;
+    text-align: center;
+}
+
+input {
+    height: 20px;
+    width: 500px;
+    border-bottom-width: 3px black;
+    border-top-width: 0;
+    border-right-width: 0;
+    border-left-width: 0;
+}
+
+button:focus {
+    color: white;
+}
+
+img {
+    width: 50px;
+}
+
+div>p:first-child {
+    display: inline;
+}
+
+div img {
+    background: black;
+}
+
+.botao-amarelo {
+    background-color: #ffaf43;
+    width: 250px;
+    height: 40px;
+    border-radius: 5px;
+    font-size: 20px;
+    color: white;
+}
+
+.botao-amarelo:hover {
+    background-color: #c44f00;
+}
+
+.container {
+    height: 500px;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.icone {
+    height: 15px;
+    width: 15px;
+    background-color: white;
+}
+
+.icone:hover{
+    background-color: gray;
+    padding: 16px 22px;
+    opacity: 0.9;
+    transition: 0.5s;
+}
+.icone:active{
+    background-color: white;
+}
+
+/** 
+  *
+  *  ESTILOS HOME 
+  *
+  **/
+
+#container-de-descricao {
+    background-color: #2274a5;
+    color: white;
+}
+
+.texto-descricao{
+    padding-top: 90px;
+}
+#container-de-descricao>ol {
+    padding: 15px 0px;
+    width: 200px;
+    margin: auto;
+}
+
+
+#container-para-comprar {
+    background-color: #e7eb90;
+}
+
+#container-para-comprar>p {
+    color: #c44f00;
+    padding: 100px 0;
+    font-size: 60px;
+    display: block;
+}
+
+
+/**
+  *
+  *  ESTILOS COMPRAR 
+  *
+  **/
+
+div:nth-child(2),
+div:last-child {
+    text-align: center;
+}
+
+table {
+    width: 60%;
+    text-align: center;
+    margin: auto;
+}
+
+
+
+td button {
+    background-color: #fadf63;
+    width: 150px;
+    height: 30px;
+    border-radius: 5px;
+    color: black;
+}
+
+.container-do-search {
+    margin-top: 20px;
+    height: 100px;
+}
+
+
+#style-button {
+    background-color: #fadf63;
+    width: 100px;
+    height: 20px;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 10px;
+    color: black;
+}
+
+#style-button:hover {
+    background-color: #635a3d;
+    color: white
+}
+.pagina-compras{
+    font-family: 'Roboto', sans-serif;
+}
+
+.button-back{
+    padding: 10% 50% ;
+
+}
+
+.button-back button{
+    padding: 10px;
+    width: 100px;
+}
