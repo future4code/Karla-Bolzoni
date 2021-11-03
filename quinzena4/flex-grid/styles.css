@@ -1,0 +1,108 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/* CABEÇALHO */
+header{
+    align-items: center;
+    background-color: mediumvioletred;
+    display: flex;
+    font-weight: bold;
+    height: 50px;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+
+header img{
+    height: 20px;
+    width: 20px;
+    padding-right: 10px;
+}
+button{
+    padding: 0 10px
+}
+
+/* MENU LATERAL */
+nav{
+    display: grid;
+    grid-row: 1/4;
+    background-color: #f2d0e0;
+    width: 100%;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+.icon-formato{
+    height: 20px;
+    width: 20px;
+    padding-right: 10px;   
+}
+
+li{
+    position: relative;
+}
+
+.icon-formato1{
+    position: absolute;
+    right: 10px;
+}
+
+/* CONTEÚDO PRINCIPAL */
+.container{
+    display:grid;
+    flex-direction: column;
+    overflow: auto;
+}
+
+#container-main{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 2fr 2fr;
+    height: 90vh;
+    row-gap: 10px;
+    justify-items: center;
+    height: 100vh;   
+}
+
+.card-galeria{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 3px 3px 2em  darkgray;
+    width: 200px;
+    margin-top: 10px;
+}
+.card-galeria>img{
+    width: 200px;
+    height: 200px;
+}
+
+.card-galeria>p{
+    text-align: center;
+    font-size: 11px;
+    padding: 10px;
+    padding-top: 0;
+}
+
+
+h3{
+    text-align: center;
+    padding: 10px;
+}
+
+
+/* RODAPÉ */
+footer{
+    background-color: mediumvioletred;
+    height: 50px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+
