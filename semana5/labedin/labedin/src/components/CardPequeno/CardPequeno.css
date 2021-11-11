@@ -1,0 +1,28 @@
+/* .small-container{
+  display: flex;
+  justify-content: center
+} */
+
+.icone{
+  width: 30px;
+    margin-right: 10px;
+}
+
+.small-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  border: 1px solid black;
+  margin: 0.625em;  
+}
+
+.info-small-container{
+  display: flex;
+  align-items: center;
+  padding: 10px
+}
+
+.bold{
+  font-weight: bold;
+
+}
