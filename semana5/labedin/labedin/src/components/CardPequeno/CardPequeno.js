@@ -10,17 +10,22 @@ const ContainerPequeno = styled.div `
   flex-direction: column;
   justify-content: flex-start;
   border: 1px solid black;
-  margin: 0.625em;  
+  margin: 0.625em;
+  background-color: white;
+  border: 1px solid #86888A;
+  border-radius: 7px;  
 `
 
 const ContainerDeInformacao = styled.div ` 
   display: flex;
   align-items: center;
   padding: 10px;
+  
 `
 
 const TituloItem = styled.p`
  font-weight: bold;
+ padding-right: 2px;
 `
 
 function CardPequeno(props) {
@@ -29,7 +34,7 @@ function CardPequeno(props) {
       <ContainerDeInformacao>
       <Icone src={ props.imagem}/>
       <TituloItem>{props.texto}</TituloItem>
-      <p>{props.email}</p>
+      <p>{props.infoContato}</p>
       </ContainerDeInformacao>
 
   </ContainerPequeno>

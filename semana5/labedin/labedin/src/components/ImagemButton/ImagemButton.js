@@ -9,6 +9,9 @@ const ContainerRedeSocial = styled.div`
     width: 200px;
     padding: 15px 30px;
     margin: 10px auto;
+    background-color: #006699;
+    color:white;
+    justify-content: center
 `
 const Icone = styled.img`
     width: 30px;

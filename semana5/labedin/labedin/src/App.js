@@ -1,25 +1,27 @@
 import React from 'react';
-import './App.css';
 import CardGrande from './components/CardGrande/CardGrande';
 import ImagemButton from './components/ImagemButton/ImagemButton';
 import CardPequeno from './components/CardPequeno/CardPequeno';
 import styled from 'styled-components'
+import arrow  from './components/ImagemButton/arrow.png'
 
 const Container = styled.div ` 
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 30px;
+  background-color:#CACCCE;
 `
-const SecaoContainer = styled.div ` 
 
+const SecaoContainer = styled.div ` 
   width: 40vw;
   margin: 10px 0;
+  
 `
 
 const TituloSecao = styled.h2 ` 
-text-align: center;
-margin-bottom: 20px;
+  text-align: center;
+  margin-bottom: 20px;
 `
 
 
@@ -35,7 +37,7 @@ function App() {
         />
 
         <ImagemButton
-          imagem="https://image.flaticon.com/icons/png/512/117/117472.png"
+          imagem={arrow}
           texto="Ver mais"
         />
       </SecaoContainer>
@@ -44,13 +46,13 @@ function App() {
         <CardPequeno
           imagem="https://cdn-icons.flaticon.com/png/512/3204/premium/3204325.png?token=exp=1636666279~hmac=9e00d0b176bea167b0d6cf37722197a4"
           texto="email:"
-          email="karlanatany@hotmail.com"
+          infoContato=" karlanatany@hotmail.com"
         />
 
         <CardPequeno
           imagem="https://cdn-icons.flaticon.com/png/512/3991/premium/3991230.png?token=exp=1636667009~hmac=619de7e8418dfad6326050632967da4b"
-          texto="Endereço:"
-          endereco="Rua três - RS"
+          texto="Endereço: "
+          infoContato=" Rua três - RS"
         />
       </SecaoContainer>
 

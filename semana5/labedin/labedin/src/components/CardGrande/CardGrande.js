@@ -8,6 +8,10 @@ const ContainerGrande = styled.div`
     padding: 20px 10px;
     margin-bottom: 10px;
     height: 200px;
+    background-color: white;
+    border: 1px solid #86888A;
+    border-radius: 7px;
+
 `
 const ImagemPerfil = styled.img `
     width: 70px;
