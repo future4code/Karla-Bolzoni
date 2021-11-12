@@ -1,16 +1,38 @@
 import React from 'react';
-import './CardPequeno.css'
+import styled from 'styled-components'
+
+const Icone = styled.img`
+  width: 30px;
+  margin-right: 10px;
+`
+const ContainerPequeno = styled.div ` 
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  border: 1px solid black;
+  margin: 0.625em;  
+`
+
+const ContainerDeInformacao = styled.div ` 
+  display: flex;
+  align-items: center;
+  padding: 10px;
+`
+
+const TituloItem = styled.p`
+ font-weight: bold;
+`
 
 function CardPequeno(props) {
   return (
-    <div className="small-container">
-      <div className="info-small-container">
-      <img className="icone" src={ props.imagem}/>
-      <p className="bold">{props.texto}</p>
+    <ContainerPequeno>
+      <ContainerDeInformacao>
+      <Icone src={ props.imagem}/>
+      <TituloItem>{props.texto}</TituloItem>
       <p>{props.email}</p>
-      </div>
+      </ContainerDeInformacao>
 
-    </div>
+  </ContainerPequeno>
   )
 }
 
