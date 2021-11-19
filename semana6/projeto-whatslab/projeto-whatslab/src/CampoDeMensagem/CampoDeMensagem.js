@@ -9,6 +9,9 @@ width: 200px;
 display: flex;
 justify-content: flex-start;
 margin-top: 5px;
+border-radius: 8px;
+border: none;
+background-color: #D3F073;
 `
 
 const Remetente = styled.p`
@@ -18,6 +21,7 @@ const Remetente = styled.p`
 const TextoMensagem = styled.p` 
 text-align: center;
 padding-left: 5px;
+
 
 `
 
@@ -33,23 +37,20 @@ const CampoRemetente = styled.input `
 width: 20%;
 height: 50%;
 border-radius: 8px;
-border: none
+border: none;
 
 `
 const CampoMensagem = styled.input ` 
 width: 60%;
 height: 50%;
 border-radius: 8px;
-border: none
+border: none;
 `
 
 class CampoDeMensagem extends React.Component {
   state = {
     listaDeMensagem: [
-      {
-        nome: "",
-        mensagem: "",
-      }
+
     ],
     novoNome: "",
     novaMensagem: ""
