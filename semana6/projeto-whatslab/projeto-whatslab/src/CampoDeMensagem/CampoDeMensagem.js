@@ -11,47 +11,77 @@ justify-content: flex-start;
 margin-top: 5px;
 border-radius: 8px;
 border: none;
-background-color: #D3F073;
+background-color: #262d31;
 `
 
 const Remetente = styled.p`
     font-weight: bold;
+    color: white;
 
 `
 const TextoMensagem = styled.p` 
 text-align: center;
 padding-left: 5px;
+color: white;
+`
+
+const ContainerMensagemSemRemetente = styled.div ` 
+padding: 0 2px;
+width: 200px;
+display: flex;
+justify-content: flex-end;
+margin-top: 5px;
+border-radius: 8px;
+border: none;
+background-color: #056162;
+color: white;
+`
+
+const ContainerListaMensagem = styled.div ` 
+display: flex;
+justify-content: flex-end;
 
 
 `
+const MensagemSemRemetente = styled.p ` 
+text-align: right;`
 
 //ESTILIZAÇÃO INPUTS, CAMPO DE MENSAGEM
-const ContainerEscreveMensagem = styled.div ` 
+const ContainerEscreveMensagem = styled.div` 
 display: flex;
 height: 90px;
-background-color: #BEC7C7;
+background-color: #1e2428;
 align-items: center;
 justify-content: space-around;
+margin-top: 5px;
 `
-const CampoRemetente = styled.input ` 
+const CampoRemetente = styled.input` 
 width: 20%;
 height: 50%;
-border-radius: 8px;
+border-radius: 21px;
 border: none;
+font-size: 1.25em;
+background-color: #33383b;
+padding-left: 5px;
+color: white;
 
 `
-const CampoMensagem = styled.input ` 
+const CampoMensagem = styled.input` 
 width: 60%;
 height: 50%;
-border-radius: 8px;
+border-radius: 21px;
 border: none;
+font-size: 1.25em;
+background-color: #33383b;
+padding-left: 5px;
+color:white;
 `
 
 class CampoDeMensagem extends React.Component {
   state = {
     listaDeMensagem: [
-
     ],
+
     novoNome: "",
     novaMensagem: ""
   };
@@ -64,7 +94,7 @@ class CampoDeMensagem extends React.Component {
 
     const copiaMensagem = [...this.state.listaDeMensagem, novaListaDeMensagem]
 
-    this.setState({ listaDeMensagem: copiaMensagem, novaMensagem:"" })
+    this.setState({ listaDeMensagem: copiaMensagem, novaMensagem: "" })
   };
 
   onChangeNome = (event) => {
@@ -76,17 +106,31 @@ class CampoDeMensagem extends React.Component {
   }
   render() {
 
-    const listaDeComponentes = this.state.listaDeMensagem.map((cadaMensagem) => (
+    const listaDeComponentes = this.state.listaDeMensagem.map((cadaMensagem) => {
 
-      <ContainerMensagem key={cadaMensagem.nome}>
-        <Remetente>{cadaMensagem.nome}:</Remetente>
-        <TextoMensagem>{cadaMensagem.mensagem}</TextoMensagem>
-      </ContainerMensagem>
-    )
-    )
+
+      const nome = cadaMensagem.nome.toLowerCase()
+      if (nome === "eu") {
+        return (
+          <ContainerListaMensagem>
+            <ContainerMensagemSemRemetente key={cadaMensagem.nome}>
+              <MensagemSemRemetente>{cadaMensagem.mensagem}</MensagemSemRemetente>
+            </ContainerMensagemSemRemetente>
+          </ContainerListaMensagem>
+        )
+      } else {
+        return (
+
+          <ContainerMensagem key={cadaMensagem.nome}>
+            <Remetente>{cadaMensagem.nome}:</Remetente>
+            <TextoMensagem>{cadaMensagem.mensagem}</TextoMensagem>
+          </ContainerMensagem>
+        )
+      }
+    })
 
     return (
-      
+
       <div>
 
         {listaDeComponentes}
@@ -99,12 +143,12 @@ class CampoDeMensagem extends React.Component {
           />
 
           <CampoMensagem
-            placeholder="Mensagem"
+            placeholder="Escreva sua mensagem"
             onChange={this.onChangeMensagem}
             value={this.state.novaMensagem}
           />
 
-            <img onClick={this.adicionaMensagem} src={iconeEnviar}/>
+          <img onClick={this.adicionaMensagem} src={iconeEnviar} />
 
 
 
