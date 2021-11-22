@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import iconeFacebook from '../../img/facebook.png'
 import iconeInstagram from '../../img/instagram.png'
 import iconeWhatsapp from '../../img/whatsapp.png'
-
+import IconeRedeSocial from '../IconeRedeSocial/IconeRedeSocial'
 //estlização
 
 const ModalContainer = styled.div ` 
@@ -16,22 +16,13 @@ const Titulo = styled.h4 `
   margin: 2px;
 `
 
-const RedeSocialContainer = styled.p ` 
+const RedeSocialContainer = styled.div ` 
 display: flex;
 justify-content: space-around;
-  color: red;
+color: red;
 `
 
-const IconeRedeSocial = styled.img ` 
-opacity: 80%;
-width: 30px;
-transition: .5s;
-cursor: pointer;
-&:hover {
-    opacity: 100%;
-  }
 
-`
 //funções
 export class ModalCompartilhar extends React.Component {
   state = {
@@ -40,9 +31,17 @@ export class ModalCompartilhar extends React.Component {
   }
 
 
-  onClickCompartilhar = () => {
-    console.log("compartilhado no facebook")
+  // onClickCompartilhar = (event, a) => {
+  //   console.log(event.target)
 
+  // }
+
+  onClickCompartilharFace = () => {
+    console.log("fui compartilhado no facebook")
+  }
+
+  onClickCompartilharInsta = () => {
+    console.log("fui compartilhado no instagram")
   }
 render() {
 
@@ -51,11 +50,20 @@ render() {
       <Titulo>Compartilhar:</Titulo>
       <RedeSocialContainer> 
         <IconeRedeSocial 
-        src={iconeFacebook} 
-        onClick={this.onClickCompartilhar}
+        iconeRedeSocial={iconeFacebook} 
+        onClickRedeSocial={this.onClickCompartilharFace}
+        nome={"facebook"}
         />
-        <IconeRedeSocial src={iconeInstagram}/>
-        <IconeRedeSocial src={iconeWhatsapp}/>
+        <IconeRedeSocial 
+        iconeRedeSocial={iconeInstagram}
+        onClickRedeSocial={this.onClickCompartilharInsta}
+        nome={"instagram"}
+        />
+        <IconeRedeSocial 
+        iconeRedeSocial={iconeWhatsapp}
+        onClickRedeSocial={this.onClickCompartilhar}
+        nome={"whats"}
+        />
       </RedeSocialContainer>
     </ModalContainer>
 

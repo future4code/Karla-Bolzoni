@@ -55,7 +55,7 @@ class Post extends React.Component {
     comentando: false,
     numeroComentarios: 0,
     salvo: false,
-    modalAberto: false
+    modalAberto: false,
   }
 
   onClickCurtida = () => {
