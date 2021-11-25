@@ -4,47 +4,68 @@ import styled from 'styled-components'
 const TarefaList = styled.ul`
   padding: 0;
   width: 200px;
+  
 `
 
 const Tarefa = styled.li`
   text-align: left;
-  text-decoration: ${({completa}) => (completa ? 'line-through' : 'none')};
+  text-decoration: ${({ completa }) => (completa ? 'line-through' : 'none')};
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
 `
 
 const InputsContainer = styled.div`
-  display: grid;
+  display: flex;
   grid-auto-flow: column;
   gap: 10px;
+
 `
 
-class App extends React.Component {
-    state = {
-      tarefas: [
-        {
-          id: Date.now(),
-          texto: "texto sobre a tarefa",
-          completa: false
-        },
-        {
-          id: Date.now(),
-          texto: "limpar a casa",
-          completa: true
-        }
-      ],
-      inputValue: '',
-      filtro: ''
-    }
+const ContainerPrincipal = styled.div` 
+width: 80%;
+margin: auto;
+display: flex;
+flex-direction: column;
 
-  componentDidUpdate() {
+`
+
+const Input = styled.input` 
+margin: 10px;
+
+`
+
+const Button = styled.button` 
+height: 25px;
+margin-top: 8px;`
+
+class App extends React.Component {
+  state = {
+    tarefas: [],
+    inputValue: '',
+    filtro: ''
+  }
+
+  componentDidMount() {
+    this.pegarLista()
+
+    const textoLs = localStorage.getItem("tarefa") || ""
+
+    this.setState({ inputValue: textoLs })
 
   };
 
-  componentDidMount() {
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.inputValue !== this.state.inputValue) {
+      localStorage.setItem("tarefa", this.state.inputValue)
+    }
 
   };
 
   onChangeInput = (event) => {
-    this.setState({inputValue: event.target.value})
+    this.setState({ inputValue: event.target.value })
 
   }
 
@@ -57,15 +78,22 @@ class App extends React.Component {
 
     const novaListaDeTarefas = [novaTarefa, ...this.state.tarefas]
 
-    this.setState({tarefas: novaListaDeTarefas})
+
+    //salvando no local storage
+    localStorage.setItem("historicoTarefas", JSON.stringify(novaListaDeTarefas))
+
+    this.setState({ tarefas: novaListaDeTarefas })
+
+    // this.limpar()
+
 
   }
 
   selectTarefa = (id) => {
     const novaListaDeTarefas = this.state.tarefas.map((tarefa) => {
-      if(id === tarefa.id) {
+      if (id === tarefa.id) {
         const novaTarefa = {
-          ... tarefa, 
+          ...tarefa,
 
           completa: !tarefa.completa
         }
@@ -75,12 +103,19 @@ class App extends React.Component {
       }
     })
 
-    this.setState({tarefas: novaListaDeTarefas})
+    this.setState({ tarefas: novaListaDeTarefas })
   }
 
   onChangeFilter = (event) => {
-    this.setState({filtro: event.target.value})
+    this.setState({ filtro: event.target.value })
 
+  }
+
+
+  pegarLista = () => {
+    const tarefasCriadas = JSON.parse(localStorage.getItem("historicoTarefas") || '[]');
+
+    this.setState({ tarefas: tarefasCriadas })
   }
 
   render() {
@@ -96,13 +131,13 @@ class App extends React.Component {
     })
 
     return (
-      <div className="App">
+      <ContainerPrincipal>
         <h1>Lista de tarefas</h1>
         <InputsContainer>
-          <input value={this.state.inputValue} onChange={this.onChangeInput}/>
-          <button onClick={this.criaTarefa}>Adicionar</button>
+          <Input value={this.state.inputValue} onChange={this.onChangeInput} />
+          <Button onClick={this.criaTarefa}>Adicionar</Button>
         </InputsContainer>
-        <br/>
+        <br />
 
         <InputsContainer>
           <label>Filtro</label>
@@ -120,11 +155,16 @@ class App extends React.Component {
                 onClick={() => this.selectTarefa(tarefa.id)}
               >
                 {tarefa.texto}
+
+
               </Tarefa>
+
             )
           })}
         </TarefaList>
-      </div>
+
+
+      </ContainerPrincipal>
     )
   }
 }
