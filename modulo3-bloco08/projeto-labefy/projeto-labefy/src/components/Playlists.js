@@ -2,16 +2,24 @@ import React from "react";
 import axios from "axios";
 import styled from "styled-components";
 import { ContainerPrincipal } from "../App";
+import { MeuBotao } from "../App";
+import { HeaderContainer } from "./DetalhesPlaylist";
 //import DetalhesPlaylist from "./DetalhesPlaylist";
 
+
 const ItemPlaylist = styled.div`
-border: 1px solid black;
-width: 500px;
-margin: 10px;
+background-color: #D9AD5B ;
+width: 40%;
+margin: 2px;
 border-radius: 5px;
-padding: 10px;
 display: flex;
 justify-content: space-between;
+align-items: center;
+padding-left: 10px;
+`
+
+const ItemHeader = styled.p` 
+padding: 0 60px;
 `
 const axiosConfig = {
   headers: {
@@ -59,15 +67,21 @@ class Playlists extends React.Component {
     const listaDePlaylist = this.state.listaPlaylist.map((playlist) => {
       return (
         <ItemPlaylist key={playlist.id}>
-          {playlist.name}
-          <button onClick={() => this.deletarPlaylist(playlist.id)}>Apagar</button>
-          <button onClick={() => this.props.verDetalhes(playlist)}>Detalhes</button>
+          <p>{playlist.name}</p>
+          <div>
+          <MeuBotao onClick={() => this.deletarPlaylist(playlist.id)}>X</MeuBotao>
+          <MeuBotao onClick={() => this.props.verDetalhes(playlist)}>Detalhes</MeuBotao>
+          </div>        
         </ItemPlaylist>
       )
     })
 
     return (
       <ContainerPrincipal>
+        <HeaderContainer>
+          <ItemHeader>Playlist</ItemHeader>
+          <ItemHeader>Opções</ItemHeader>
+        </HeaderContainer>
         {listaDePlaylist}
       </ContainerPrincipal>
     )

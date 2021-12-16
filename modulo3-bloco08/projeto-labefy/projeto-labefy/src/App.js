@@ -7,21 +7,27 @@ import styled from "styled-components";
 
 export const ContainerPrincipal = styled.div` 
 background-color: gray;
-width: 90%;
+width: 90vh;
 display: flex;
 flex-direction: column;
 align-items: center;
-justify: 
-height: 100vh;
-margin: 100px auto;
+height: 80%;
+margin: 50px auto;
 border-radius: 5px;
-
 `
 
-const BotaoMenu = styled.div`
-margin: 10px;
-
+export const MeuBotao = styled.button`
+    background: #0D0D0D;
+    border:none;
+    border-radius: 3px;
+    color: #FDFDFD;
+    font-size: 10px;
+    margin: 1rem;
+    padding: 10px;
+    cursor: pointer;
 `
+
+
 class App extends React.Component {
 
   state = {
@@ -35,7 +41,7 @@ class App extends React.Component {
       case "criarPlaylist":
         return <CriarPlaylist />
       case "detalhesPlaylist":
-        return <DetalhesPlaylist playlist={this.state.playlist}/>
+        return <DetalhesPlaylist playlist={this.state.playlist} />
       case "playlists":
         return <Playlists verDetalhes={this.irParaDetalhesPlaylist} />
       default:
@@ -51,19 +57,20 @@ class App extends React.Component {
     this.setState({ paginaAtual: "playlists" })
   }
 
+  irParaCriarPlaylists = () => {
+    this.setState({ paginaAtual: "criarPlaylist" })
+  }
+
   render() {
     return (
       <ContainerPrincipal>
-<h1>Labefy Premium</h1>
+        <h1>Labefy Premium</h1>
         {this.explorar()}
 
-        <BotaoMenu>
-          <button onClick={this.irParaDetalhesPlaylist}>DETALHES PLAYLIST</button>
+        <MeuBotao onClick={this.irParaCriarPlaylists}>INICIO</MeuBotao>
 
-        </BotaoMenu>
-        <BotaoMenu>
-          <button onClick={this.irParaPlaylists}>MINHAS PLAYLISTS</button>
-        </BotaoMenu>
+        <MeuBotao onClick={this.irParaPlaylists}>MINHAS PLAYLISTS</MeuBotao>
+
 
       </ContainerPrincipal>
     )

@@ -2,16 +2,33 @@ import React from "react";
 import axios from "axios";
 import styled from "styled-components";
 
-const ContainerCriarPlaylist = styled.div` 
-height: 100px;
-display: flex;
-flex-direction: column;
-width: 50%;
-margin: auto;
-justify-content: space-around;
+const ContainerAdicionarMusica = styled.div ` 
+display:flex;
+height: 10%;
 align-items: center;
+flex-wrap: wrap;
 
 `
+
+const Input = styled.input ` 
+margin: 5px;
+border-radius: 3px;
+border: none;
+//height: 20px;
+padding: 10px;
+`
+
+const MeuBotao = styled.button`
+    background: #0D0D0D;
+    border:none;
+    border-radius: 3px;
+    color: #FDFDFD;
+    font-size: 10px;
+    margin: 1rem;
+    padding: 12px;
+    cursor: pointer;
+`;
+
 
 class CriarPlaylist extends React.Component {
     //declarar state
@@ -47,15 +64,15 @@ class CriarPlaylist extends React.Component {
 
     render() {
         return (
-            <ContainerCriarPlaylist>
-                <input
+            <ContainerAdicionarMusica>
+                <Input
                     placeholder="Nome da nova Playlist"
                     type="text"
                     value={this.state.nome}
                     onChange={this.inputNomePlaylist}
                 />
-                <button onClick={this.criaPlaylist}>CRIAR PLAYLIST</button>
-            </ContainerCriarPlaylist>
+                <MeuBotao onClick={this.criaPlaylist}>CRIAR PLAYLIST</MeuBotao>
+            </ContainerAdicionarMusica>
         )
     }
 }
