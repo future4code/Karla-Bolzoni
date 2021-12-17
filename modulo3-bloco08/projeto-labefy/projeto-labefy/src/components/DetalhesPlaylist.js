@@ -17,16 +17,16 @@ export const HeaderContainer = styled(ContainerMusica)`
 background-color: black;
 color: #D9AD5B;
 `
-const Link = styled.a ` 
+export const Link = styled.a` 
 color: #222126;`
 
-const Titulo = styled.h1`
+export const Titulo = styled.h1`
 border-bottom: solid 5px black;
 display: inline;
 
 `
 
-const ContainerAdicionarMusica = styled.div ` 
+const ContainerAdicionarMusica = styled.div` 
 display:flex;
 height: 100px;
 align-items: center;
@@ -34,7 +34,7 @@ flex-wrap: wrap;
 
 `
 
-const Input = styled.input ` 
+const Input = styled.input` 
 margin: 5px;
 border-radius: 3px;
 border: none;
@@ -104,7 +104,7 @@ class DetalhesPlaylist extends React.Component {
       )
       .then((res) => {
         console.log(res)
-        this.setState({ nameInput: "", artistInput: "", urlInput: ""})
+        this.setState({ nameInput: "", artistInput: "", urlInput: "" })
 
         this.visualizarPlaylist()
       })
@@ -119,14 +119,14 @@ class DetalhesPlaylist extends React.Component {
       `https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${this.props.playlist.id}/tracks/${trackId}`,
       axiosConfig,
     )
-    .then((res) => {
-      console.log('musica apagada')
-      this.visualizarPlaylist()
-    })
-    .catch(err => {
-      console.log('erro ao apagar musica')
-      console.log(err)
-    })
+      .then((res) => {
+        console.log('musica apagada')
+        this.visualizarPlaylist()
+      })
+      .catch(err => {
+        console.log('erro ao apagar musica')
+        console.log(err)
+      })
 
   }
   render() {
@@ -137,13 +137,15 @@ class DetalhesPlaylist extends React.Component {
           <Link href={musica.url} target="_blank" >{musica.name}</Link>
           <MeuBotao onClick={() => this.removerMusica(musica.id)}>X</MeuBotao>
         </ContainerMusica>
+
+
       )
     })
     return (
       <div>
         <Titulo>{this.props.playlist.name}</Titulo>
         <p> Quantidade de músicas: {this.state.quantity}</p>
-        
+
         <HeaderContainer>
           <p>Artista</p>
           <p>Música</p>
@@ -169,6 +171,11 @@ class DetalhesPlaylist extends React.Component {
             onChange={this.inputURL}
           />
           <MeuBotao onClick={this.inserirMusica}>Adicionar Música</MeuBotao>
+
+          <audio autoplay="autoplay" controls="controls">
+            <source src="https://soundcloud.com/ouvir-musica-online/14-faz-brilhar-brilha-jesus-ao?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing" type="audio/mp3" />
+            seu navegador não suporta HTML5
+          </audio>
 
 
         </ContainerAdicionarMusica>
