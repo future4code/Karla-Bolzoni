@@ -4,14 +4,15 @@ import styled from "styled-components"
 import { MeuBotao } from "../App"
 
 export const ContainerMusica = styled.div` 
-background-color: #D9AD5B;
-margin: 2px;
+background-color: yellow;
 color: #222126;
 display: flex;
 justify-content: space-between;
 font-size: small;
 align-items: center;
-padding: 0 14px;
+height: 50px;
+width: 80%;
+margin: 5px auto;
 `
 export const HeaderContainer = styled(ContainerMusica)`
 background-color: black;
@@ -59,10 +60,10 @@ class DetalhesPlaylist extends React.Component {
 
   componentDidMount() {
     this.visualizarPlaylist()
-    console.log(this.props.playlist)
-
   }
 
+  //REQUISIÇÃO PARA VISUALIZAR PLAYLISTS
+  
   visualizarPlaylist = () => {
     axios
       .get(`https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${this.props.playlist.id}/tracks`, axiosConfig)
@@ -148,7 +149,8 @@ class DetalhesPlaylist extends React.Component {
 
         <HeaderContainer>
           <p>Artista</p>
-          <p>Música</p>
+          <p>Acessar Música</p>
+          <p>Opções</p>
         </HeaderContainer>
         {detalhesDaPlaylist}
 
@@ -171,11 +173,6 @@ class DetalhesPlaylist extends React.Component {
             onChange={this.inputURL}
           />
           <MeuBotao onClick={this.inserirMusica}>Adicionar Música</MeuBotao>
-
-          <audio autoplay="autoplay" controls="controls">
-            <source src="https://soundcloud.com/ouvir-musica-online/14-faz-brilhar-brilha-jesus-ao?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing" type="audio/mp3" />
-            seu navegador não suporta HTML5
-          </audio>
 
 
         </ContainerAdicionarMusica>

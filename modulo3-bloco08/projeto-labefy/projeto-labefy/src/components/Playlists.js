@@ -8,7 +8,7 @@ import { HeaderContainer } from "./DetalhesPlaylist";
 
 
 const ItemPlaylist = styled.div`
-background-color: #D9AD5B ;
+background-color: yellow ;
 width: 40%;
 margin: 2px;
 border-radius: 5px;
@@ -27,6 +27,8 @@ const axiosConfig = {
   }
 }
 
+//Página que mostra as playlists 
+
 class Playlists extends React.Component {
   state = {
     listaPlaylist: [],
@@ -39,7 +41,7 @@ class Playlists extends React.Component {
     this.mostraPlaylist()
   }
 
-
+  //Requisição para pegar as playlists
   mostraPlaylist = () => {
     axios
       .get("https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists", axiosConfig)
@@ -51,6 +53,7 @@ class Playlists extends React.Component {
       })
   }
 
+  //Requisição para deletar uma playlist
   deletarPlaylist = (playlistId) => {
     axios
       .delete(`https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${playlistId}`, axiosConfig)
@@ -69,15 +72,16 @@ class Playlists extends React.Component {
         <ItemPlaylist key={playlist.id}>
           <p>{playlist.name}</p>
           <div>
-          <MeuBotao onClick={() => this.deletarPlaylist(playlist.id)}>X</MeuBotao>
-          <MeuBotao onClick={() => this.props.verDetalhes(playlist)}>Detalhes</MeuBotao>
-          </div>        
+            <MeuBotao onClick={() => this.deletarPlaylist(playlist.id)}>X</MeuBotao>
+            <MeuBotao onClick={() => this.props.verDetalhes(playlist)}>Detalhes</MeuBotao>
+          </div>
         </ItemPlaylist>
       )
     })
 
     return (
       <ContainerPrincipal>
+        <h1>Minhas Playslists</h1>
         <HeaderContainer>
           <ItemHeader>Playlist</ItemHeader>
           <ItemHeader>Opções</ItemHeader>

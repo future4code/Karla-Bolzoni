@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import styled from "styled-components";
 
-const ContainerAdicionarMusica = styled.div ` 
+const ContainerAdicionarMusica = styled.div` 
 display:flex;
 height: 10%;
 align-items: center;
@@ -10,7 +10,7 @@ flex-wrap: wrap;
 
 `
 
-const Input = styled.input ` 
+const Input = styled.input` 
 margin: 5px;
 border-radius: 3px;
 border: none;
@@ -62,7 +62,7 @@ class CriarPlaylist extends React.Component {
             })
     }
 
-    
+
 
     render() {
         return (
