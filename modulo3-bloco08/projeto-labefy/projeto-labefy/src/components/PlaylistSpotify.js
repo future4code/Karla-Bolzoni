@@ -1,13 +1,21 @@
 import React from "react";
 import axios from "axios";
 import { MeuBotao } from "../App";
-import { ContainerMusica, Link, Titulo } from "./DetalhesPlaylist";
-//import styled from "styled-components";
+import { ContainerMusica, HeaderContainer, Link, Titulo } from "./DetalhesPlaylist";
+import styled from "styled-components";
+
+const ContainerSpotify = styled.div ` 
+display: flex;
+flex-direction: column;
+
+`
 
 const spotify = {
   clientId: 'db1b09c53d6d4bad889b2ebd429ea3a1',
   clientSecret: '801a5b3843b848c18c6b2a63a242a4d9',
 }
+
+
 
 class PlaylistSpotify extends React.Component {
   state = {
@@ -38,23 +46,6 @@ class PlaylistSpotify extends React.Component {
       })
       .catch(erro => {
         console.log(erro)
-      })
-  }
-
-  topTracksLorde = () => {
-    axios.get("https://api.spotify.com/v1/artists/163tK9Wjr9P9DmM0AVK7lm/top-tracks?country=BR",
-      {
-        headers:
-        {
-          Authorization: `Bearer ${this.state.token}`
-        }
-      })
-      .then(dados => {
-        // console.log(dados.data.tracks[0])
-        this.setState({ tracks: dados.data.tracks })
-      })
-      .catch(err => {
-        console.log(err)
       })
   }
 
@@ -89,20 +80,25 @@ class PlaylistSpotify extends React.Component {
       )
     })  
     return (
-      <div>
+      <ContainerSpotify>
         <Titulo>Área do spotify</Titulo>
-        {mostraMusica}
-        <br/>
-        <MeuBotao onClick={this.topTracksLorde}>Buscar top tracks da Lorde</MeuBotao>
-        
-        <br/>
+
         <input
+        placeholder={'buscar por Artista ou música'}
         value={this.state.inputBuscaSpotify}
         onChange={this.pegaInputSpotify}
         />
-        <button onClick={this.pesquisaMusica}>Pesquisar</button>
 
-      </div>
+        <MeuBotao onClick={this.pesquisaMusica}>Pesquisar</MeuBotao>
+
+        <HeaderContainer>
+            <p>Nome da música</p>
+            <p>Opções</p>
+          </HeaderContainer>
+        {mostraMusica}
+
+
+      </ContainerSpotify>
     )
   }
 }
