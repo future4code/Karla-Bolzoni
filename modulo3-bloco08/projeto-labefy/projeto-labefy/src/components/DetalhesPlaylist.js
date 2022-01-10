@@ -1,46 +1,32 @@
 import React from "react"
 import axios from "axios"
 import styled from "styled-components"
-import { MeuBotao } from "../App"
+import { ContainerPrincipal, MeuBotao } from "../App"
+import PlaylistSpotify from "./PlaylistSpotify"
 
-export const ContainerMusica = styled.div` 
-background-color: yellow;
-color: #222126;
-display: flex;
-justify-content: space-between;
-font-size: small;
-align-items: center;
-height: 50px;
+const DetalheMusica = styled.div` 
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
 width: 80%;
-margin: 5px auto;
+text-align: center;
+align-items: center;
+&:hover{
+  background-color: #76777B;
+};
+border-radius: 10px;
+margin: 5px;
 `
-export const HeaderContainer = styled(ContainerMusica)`
-background-color: black;
-color: #D9AD5B;
+
+const CabecalhoDetalhes = styled(DetalheMusica)` 
+background-color: #8D92F2;
+pointer-events: none;
+
 `
 export const Link = styled.a` 
-color: #222126;`
-
-export const Titulo = styled.h1`
-border-bottom: solid 5px black;
-display: inline;
-
+color: white;
 `
 
-const ContainerAdicionarMusica = styled.div` 
-display:flex;
-height: 100px;
-align-items: center;
-flex-wrap: wrap;
 
-`
-
-const Input = styled.input` 
-margin: 5px;
-border-radius: 3px;
-border: none;
-height: 20px;
-`
 
 const axiosConfig = {
   headers: {
@@ -63,7 +49,7 @@ class DetalhesPlaylist extends React.Component {
   }
 
   //REQUISIÇÃO PARA VISUALIZAR PLAYLISTS
-  
+
   visualizarPlaylist = () => {
     axios
       .get(`https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${this.props.playlist.id}/tracks`, axiosConfig)
@@ -74,28 +60,9 @@ class DetalhesPlaylist extends React.Component {
         console.log(err.response);
       })
   }
+
   //ADICIONANDO UMA NOVA MÚSICA
-
-  inputNomeMusica = (event) => {
-    this.setState({ nameInput: event.target.value })
-  }
-
-  inputNomeArtista = (event) => {
-    this.setState({ artistInput: event.target.value })
-  }
-
-  inputURL = (event) => {
-    this.setState({ urlInput: event.target.value })
-  }
-
-  inserirMusica = () => {
-
-    const body = {
-      name: this.state.nameInput,
-      artist: this.state.artistInput,
-      url: this.state.urlInput
-    }
-
+  inserirMusica = (body) => {
     axios
       .post(
         `https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${this.props.playlist.id}/tracks`,
@@ -104,9 +71,6 @@ class DetalhesPlaylist extends React.Component {
 
       )
       .then((res) => {
-        console.log(res)
-        this.setState({ nameInput: "", artistInput: "", urlInput: "" })
-
         this.visualizarPlaylist()
       })
       .catch(err => {
@@ -115,17 +79,18 @@ class DetalhesPlaylist extends React.Component {
       })
   }
 
+  //Removendo uma música
   removerMusica = (trackId) => {
     axios.delete(
       `https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${this.props.playlist.id}/tracks/${trackId}`,
       axiosConfig,
     )
       .then((res) => {
-        console.log('musica apagada')
+        alert("A faixa foi removida com sucesso")
         this.visualizarPlaylist()
       })
       .catch(err => {
-        console.log('erro ao apagar musica')
+        alert("erro ao apagar musica")
         console.log(err)
       })
 
@@ -133,50 +98,34 @@ class DetalhesPlaylist extends React.Component {
   render() {
     const detalhesDaPlaylist = this.state.tracks.map((musica) => {
       return (
-        <ContainerMusica key={musica.id}>
-          <p>{musica.artist}</p>
-          <Link href={musica.url} target="_blank" >{musica.name}</Link>
-          <MeuBotao onClick={() => this.removerMusica(musica.id)}>X</MeuBotao>
-        </ContainerMusica>
-
-
+        <DetalheMusica key={musica.id}>
+          <div>
+            <p>{musica.artist}</p>
+          </div>
+          <div>
+            <Link href={musica.url} target="_blank" >{musica.name}</Link>
+          </div>
+          <div>
+            <MeuBotao onClick={() => this.removerMusica(musica.id)}>X</MeuBotao>
+          </div>
+        </DetalheMusica>
       )
     })
     return (
-      <div>
-        <Titulo>{this.props.playlist.name}</Titulo>
-        <p> Quantidade de músicas: {this.state.quantity}</p>
+        <ContainerPrincipal>
+          <h1>{this.props.playlist.name}</h1>
+          <p> Quantidade de músicas: {this.state.quantity}</p>
 
-        <HeaderContainer>
-          <p>Artista</p>
-          <p>Acessar Música</p>
-          <p>Opções</p>
-        </HeaderContainer>
-        {detalhesDaPlaylist}
+          <CabecalhoDetalhes>
+            <p>Artista</p>
+            <p>Acessar Música</p>
+            <p>Opções</p>
+          </CabecalhoDetalhes>
+          {detalhesDaPlaylist}
 
-        <ContainerAdicionarMusica>
-          <Input
-            placeholder={"Nome da música"}
-            value={this.state.name}
-            onChange={this.inputNomeMusica}
-          />
-
-          <Input
-            placeholder={"Artista"}
-            value={this.state.artist}
-            onChange={this.inputNomeArtista}
-          />
-
-          <Input
-            placeholder={"URL"}
-            value={this.state.url}
-            onChange={this.inputURL}
-          />
-          <MeuBotao onClick={this.inserirMusica}>Adicionar Música</MeuBotao>
-
-
-        </ContainerAdicionarMusica>
-      </div>
+          <PlaylistSpotify inserirMusicaSpotify={this.inserirMusica} />
+          <MeuBotao onClick={this.props.retornaHome}>Home</MeuBotao>
+        </ContainerPrincipal>
     )
   }
 }
