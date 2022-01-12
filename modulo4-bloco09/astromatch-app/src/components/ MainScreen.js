@@ -4,26 +4,36 @@ import styled from 'styled-components'
 import Header from './Header'
 import Options from './Options'
 
-const MainContainer = styled.div` 
+export const MainContainer = styled.div` 
 width: 30%;
 border: 1px solid black;
 height: 80vh;
 margin: auto;
 margin-top: 50px;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+
 `
 
 const Photo = styled.img` 
-width: 80%;
-height: 60%;
+width: 70%;
+height: 50%;
+margin-left: 60px;
+border-radius: 5px;
+box-shadow: 20px 30px 80px;
 `
+const Descricao = styled.p ` 
+text-align: center;
 
+`
 const axiosConfig = {
     headers:{
         'content-type': 'application/json'
     }
 }
 
-const MainScreen = () => {
+const MainScreen = (props) => {
     const [profile, setProfile] = useState({});
 
     useEffect(() => {
@@ -62,15 +72,18 @@ const MainScreen = () => {
 
     return (
         <MainContainer>
-            <Header />
+            <Header irParaMatchs={props.irParaMatchs}/>
             <hr />
-            <p>{profile.name}</p>
+
+            <h1>{profile.name}</h1>
             <Photo src={profile.photo} />
-            <p>{profile.bio}</p>
+            <Descricao>{profile.bio}</Descricao>
 
 
-            <Options recusar={showProfile}
-            accept={() =>choosePerson(profile.id)} />
+            <Options 
+            recusar={showProfile}
+            accept={() =>choosePerson(profile.id)} 
+            />
 
 
         </MainContainer>

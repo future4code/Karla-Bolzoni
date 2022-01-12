@@ -7,11 +7,11 @@ display: flex;
 justify-content: space-around;
 `
 
-const ImagemBotao = styled.div` 
+export const ImagemBotao = styled.div` 
 cursor: pointer;
 width: 10%;
-
 `
+
 function Options(props) {
     return (
         <ContainerOptions>
