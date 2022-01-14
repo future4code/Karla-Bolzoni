@@ -1,38 +1,51 @@
-import React, { useState } from 'react'
-//import axios from 'axios'
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
-
-const MatchScreen = (props) => {
-    // const [matchProfiles, setMatchProfiles] = useState([])
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import Avatar from '@mui/material/Avatar';
+import { Box } from '@mui/material';
 
 
-    // const getMatches = () => { 
-    //     axios
-    //     .get("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/natany/matches")
-    //     .then((res) => {
-    //         // setMatchProfiles()
-    //         console.log(res)
-    //     })
-    //     .catch((err) => {
-    //         console.log(err);
-    //     })
+const MatchScreen = () => {
+    const [matchProfiles, setMatchProfiles] = useState([])
 
-    // }
+    useEffect(() => {
+        getMatches()
+    }, [])
+
+    const getMatches = () => {
+        axios
+            .get("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/natany/matches")
+            .then((res) => {
+                setMatchProfiles(res.data.matches)
+
+
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+        console.log(matchProfiles)
+    }
+
+    const listaMatches = matchProfiles.map((match) => {
+        return (
+            <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+                <ListItem alignItems="flex-start">
+                    <ListItemAvatar>
+                        <Avatar alt={match.nome} src={match.photo} />
+                    </ListItemAvatar>
+                    <p key={match.id}>{match.name}</p>
+                    
+                </ListItem>
+            </List>
+            
+        )
+    })
     return (
-    //     <React.Fragment>
-    //     <CssBaseline />
-    //     <Container fixed>
-    //       <Box sx={{ border:1, height: '80vh', width: '40%', margin: 'auto' }} />
-    //     </Container>
-    //   </React.Fragment>
-<div>
-            <p>tela de matches</p>
-            <button onClick={props.irParaHome}>VOLTAR HOME</button>
-            <Button variant="contained"> Olá Mundo</Button>;
-            </div>
+        <Box sx={{ width: "100%" }}>
+            {listaMatches}
+        </Box>
     )
 }
 

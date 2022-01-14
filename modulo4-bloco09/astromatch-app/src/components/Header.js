@@ -1,8 +1,11 @@
 import React from 'react'
 import logoAstroMatch from '../images/logo-astromatch.png'
 import styled from 'styled-components'
-import Icon from './Icon'
 import { ImagemBotao } from './Options'
+import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
+import HomeIcon from '@mui/icons-material/Home';
+
+
 
 const LogoText = styled.img ` 
 width: 40%;
@@ -13,13 +16,16 @@ display: flex;
 justify-content: space-between;
 align-items: center;
 `
+
+const IconHeader = styled.div ` 
+`
 const Header = (props) => {
     return (
         <ContainerHeader>
             <LogoText src={logoAstroMatch} />
-            <ImagemBotao onClick={props.irParaMatchs}>
-                <Icon img='tinder'/>
-            </ImagemBotao>
+            <div onClick={() => props.changePage('telaAtual')}>
+             { props.telaAtual === 'home' ? <LocalFireDepartmentIcon color="secondaryDark" /> : <HomeIcon color="secondary" />}
+            </div>
             
         </ContainerHeader>
     )

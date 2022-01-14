@@ -1,34 +1,32 @@
 import React, { useState } from 'react'
 import MainScreen from "./components/ MainScreen";
 import MatchScreen from './components/MatchScreen';
+import { Box } from '@mui/material';
+import Header from './components/Header';
 
 function App() {
 
   const [telaAtual, setTelaAtual] = useState("home")
 
   const mudaTela = () => {
-    switch (telaAtual){
-      case "home":
-        return <MainScreen irParaMatchs={irParaMatchs}/>
-      case "telaMatch":
-        return <MatchScreen irParaHome={irParaHome}/>
-      default:
-        return <div>Erro, página não encontrada!</div>
+    if(telaAtual === "home") return <MainScreen/>
+
+      return <MatchScreen/>
+  }
+
+  const changePage = (telaAtual) => {
+    if(telaAtual === "telaMatch") {
+    setTelaAtual("home")
+    }else {
+    setTelaAtual("telaMatch")
     }
   }
-
-  const irParaMatchs = () => {
-    setTelaAtual("telaMatch")
-  } 
-
-  const irParaHome = () => {
-    setTelaAtual("home")
-  }
+ 
   return (
-    <div>
-      {/* <MainScreen /> */}
+    <Box sx={{ width:300, height:"70vh", border: 1 ,  mx: 'auto'}}>
+      <Header changePage={() => changePage(telaAtual)} telaAtual={telaAtual}/>
       {mudaTela()}
-    </div>
+    </Box>
   );
 }
 

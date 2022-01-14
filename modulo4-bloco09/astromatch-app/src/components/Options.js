@@ -1,6 +1,7 @@
 import React from 'react'
-import Icon from './Icon'
 import styled from 'styled-components'
+import ClearIcon from '@mui/icons-material/Clear';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 const ContainerOptions = styled.div` 
 display: flex;
@@ -10,17 +11,22 @@ justify-content: space-around;
 export const ImagemBotao = styled.div` 
 cursor: pointer;
 width: 10%;
+text-align: center;
+padding: 5px;
+border-radius: 50px;
+border: ${props => props.succes ? '1px solid green' : '1px solid red'};
+
 `
 
 function Options(props) {
     return (
         <ContainerOptions>
             <ImagemBotao onClick={props.recusar}>
-                <Icon img={'excluir'} />
+                <ClearIcon sx={{ color: 'red' }}/>
             </ImagemBotao>
 
-            <ImagemBotao onClick={props.accept}>
-                <Icon img={'heart'} />
+            <ImagemBotao succes onClick={props.accept}>
+              <FavoriteIcon sx={{ color: 'green' }}/>
             </ImagemBotao>
         </ContainerOptions>
     )

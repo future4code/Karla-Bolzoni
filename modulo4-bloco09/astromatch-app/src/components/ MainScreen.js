@@ -1,3 +1,4 @@
+import { Box } from '@mui/material'
 import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
@@ -63,6 +64,7 @@ const MainScreen = (props) => {
         .then((res) => {
             alert("tudo certo")
             showProfile()
+            console.log(res);
         })
         .catch((err) => { 
             console.log("erro")
@@ -71,8 +73,8 @@ const MainScreen = (props) => {
     }
 
     return (
-        <MainContainer>
-            <Header irParaMatchs={props.irParaMatchs}/>
+        <Box sx={{ width:"100%", height:"60vh"}}>
+            
             <hr />
 
             <h1>{profile.name}</h1>
@@ -86,7 +88,7 @@ const MainScreen = (props) => {
             />
 
 
-        </MainContainer>
+        </Box>
     )
 }
 
