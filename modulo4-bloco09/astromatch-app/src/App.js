@@ -5,29 +5,21 @@ import { Box } from '@mui/material';
 import Header from './components/Header';
 
 function App() {
-
   const [telaAtual, setTelaAtual] = useState("home")
 
-  const mudaTela = () => {
-    if(telaAtual === "home") return <MainScreen/>
+  const mudaTela = () => telaAtual === "home" ? <MainScreen/> : <MatchScreen/>
 
-      return <MatchScreen/>
-  }
+  const changePage = (page) => page === "telaMatch" ? setTelaAtual("home") : setTelaAtual("telaMatch")
 
-  const changePage = (telaAtual) => {
-    if(telaAtual === "telaMatch") {
-    setTelaAtual("home")
-    }else {
-    setTelaAtual("telaMatch")
-    }
-  }
- 
-  return (
-    <Box sx={{ width:300, height:"70vh", border: 1 ,  mx: 'auto'}}>
-      <Header changePage={() => changePage(telaAtual)} telaAtual={telaAtual}/>
+  return(
+    <Box sx={{ width: 300, height: "70vh", border: 1, mx: 'auto' }}>
+      <Header 
+        changePage={() => changePage(telaAtual)} 
+        telaAtual={telaAtual} 
+      />
+      
       {mudaTela()}
     </Box>
-  );
+  )
 }
-
 export default App;

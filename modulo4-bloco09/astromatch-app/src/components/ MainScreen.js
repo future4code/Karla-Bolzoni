@@ -2,39 +2,34 @@ import { Box } from '@mui/material'
 import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import Header from './Header'
 import Options from './Options'
-
-export const MainContainer = styled.div` 
-width: 30%;
-border: 1px solid black;
-height: 80vh;
-margin: auto;
-margin-top: 50px;
-display: flex;
-flex-direction: column;
-justify-content: space-between;
-
-`
+import config from '../config'
+import Swal from 'sweetalert2'
 
 const Photo = styled.img` 
-width: 70%;
-height: 50%;
-margin-left: 60px;
+width: 80%;
+height: 90%;
 border-radius: 5px;
-box-shadow: 20px 30px 80px;
+box-shadow: 0px 0px 90px;
 `
-const Descricao = styled.p ` 
+const Descricao = styled.p` 
 text-align: center;
-
 `
-const axiosConfig = {
-    headers:{
-        'content-type': 'application/json'
-    }
-}
+const TitleName = styled.div` 
+margin-left: 5px;
+display: flex;
+justify-content: center;
+align-items: flex-end;
+`
 
-const MainScreen = (props) => {
+const PhotoCOntainer = styled.div ` 
+height: 60%;
+display: flex;
+justify-content: center;
+align-items: center;
+`
+
+const MainScreen = () => {
     const [profile, setProfile] = useState({});
 
     useEffect(() => {
@@ -43,53 +38,49 @@ const MainScreen = (props) => {
 
     const showProfile = () => {
         axios
-            .get("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/natany/person")
-            .then((res) => {
-                setProfile(res.data.profile)
-            })
-            .catch((err) => {
-                console.log(err)
-            })
-
+            .get(`${config.baseURL}/person`)
+            .then((res) => setProfile(res.data.profile))
+            .catch((err) => console.log(err))
     }
 
-    const choosePerson = (idPerson) => {
-
+    const choosePerson = (person) => {
         const data = {
-            id: idPerson,
+            id: person.id,
             choice: true
         }
-        axios
-        .post (`https://us-central1-missao-newton.cloudfunctions.net/astroMatch/natany/choose-person`, data, axiosConfig )
-        .then((res) => {
-            alert("tudo certo")
-            showProfile()
-            console.log(res);
-        })
-        .catch((err) => { 
-            console.log("erro")
-        })
 
+        axios
+            .post(`${config.baseURL}/choose-person`, data, config.axiosConfig)
+            .then(async (res) => {
+                if (res.data.isMatch) {
+                    await Swal.fire(`Opaaaaaaaa, deu matche com ${person.name}🔥`)
+                }
+                showProfile()
+            })
+            .catch((err) => console.log("erro"))
     }
 
-    return (
-        <Box sx={{ width:"100%", height:"60vh"}}>
-            
-            <hr />
+    if (profile) {
+        return (
+            <Box sx={{ width: "100%", height: "60vh", display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
+                <PhotoCOntainer>
+                    <Photo src={profile.photo} />
+                </PhotoCOntainer>
+                <TitleName>
+                    <h2>{profile.name}</h2>
+                    <h2>, {profile.age}</h2>
+                </TitleName>
+                <Descricao>{profile.bio}</Descricao>
 
-            <h1>{profile.name}</h1>
-            <Photo src={profile.photo} />
-            <Descricao>{profile.bio}</Descricao>
+                <Options
+                    recusar={showProfile}
+                    accept={() => choosePerson(profile)}
+                />
+            </Box>
+        )
+    }
 
-
-            <Options 
-            recusar={showProfile}
-            accept={() =>choosePerson(profile.id)} 
-            />
-
-
-        </Box>
-    )
+    return <p>Carregando</p>
 }
 
 export default MainScreen
