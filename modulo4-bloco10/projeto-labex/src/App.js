@@ -8,22 +8,21 @@ import TripDetailsPage from "./pages/TripDetailsPage";
 import { ChakraProvider } from '@chakra-ui/react'
 import { Container } from "@chakra-ui/react";
 import Header from "./components/Header";
-import { HomePage } from "./pages/HomePage";
+import HomePage from "./pages/HomePage";
+import Router from "./route/Router";
 
 function App() {
   return (
     <ChakraProvider>
-      <Container maxW='container.xl' padding={50} centerContent  bg='gray.200'>
-      <HomePage/>
-       
-        {/* <Header/>
-        
-       <ListTripsPage/>
-        <ApplicationFormPage/>
-        <LoginPage/>
-        <AdminHomePage/>
-        <TripDetailsPage/>
-        <CreateTripPage/> */}
+      <Container maxW='container.xl' padding={50} centerContent bg='gray.200'>
+        {/* <ListTripsPage />
+        <AdminHomePage />
+        <ApplicationFormPage />
+        <LoginPage />
+        <HomePage />
+        <TripDetailsPage />
+        <CreateTripPage /> */}
+        <Router/>
       </Container>
     </ChakraProvider>
   );

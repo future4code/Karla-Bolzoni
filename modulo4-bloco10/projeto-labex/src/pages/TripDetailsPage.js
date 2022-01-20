@@ -1,7 +1,12 @@
 import React from 'react';
+import ButtonGoBack from '../components/ButtonGoBack';
+import Titulo from '../components/Titulo';
 
 const TripDetailsPage = () => {
-  return <div><p>Para o administrador ver o detalhe de uma viagem específica, bem como os candidatos que aplicaram para ela</p></div>;
+  return <div>
+    <Titulo texto="Detalhes da viagem"/>
+    <ButtonGoBack/>
+  </div>;
 };
 
 export default TripDetailsPage;

@@ -1,7 +1,14 @@
 import React from 'react';
+import ButtonComponent from '../components/ButtonComponent';
+import ButtonGoBack from '../components/ButtonGoBack';
+import Titulo from '../components/Titulo';
 
 const CreateTripPage = () => {
-  return <div><p>Formulário para o adm criar uma nova trip :P</p></div>;
+  return <div>
+    <Titulo texto="Criar uma nova viagem"/>
+    <ButtonComponent textButton="Criar"/>
+    <ButtonGoBack/>
+  </div>;
 };
 
 export default CreateTripPage;

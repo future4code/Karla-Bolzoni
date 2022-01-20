@@ -4,7 +4,7 @@ import { Button } from '@chakra-ui/react';
 const ButtonComponent = (props) => {
     return (
         <div>
-            <Button colorScheme='teal' variant='outline'>
+            <Button onClick={props.onClick} colorScheme='teal' variant='outline'>
                 {props.textButton}
             </Button>
         </div>

@@ -1,7 +1,20 @@
 import React from 'react';
+import Titulo from '../components/Titulo';
+import { useHistory } from "react-router-dom";
+import ButtonComponent from '../components/ButtonComponent';
+import ButtonGoBack from '../components/ButtonGoBack';
+
 
 const ApplicationFormPage = () => {
-  return <div>Página Para o usuário se candidatar à viagens, página que vai ter o formulário de inscrição</div>;
+  const history = useHistory()
+
+
+  return <div>
+    <Titulo texto="Formulário de aplicação"/>
+    <ButtonGoBack/>
+    <ButtonComponent textButton='Enviar'/>
+
+  </div>;
 };
 
 export default ApplicationFormPage;
