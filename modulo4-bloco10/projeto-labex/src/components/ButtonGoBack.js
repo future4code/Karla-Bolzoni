@@ -5,13 +5,9 @@ import ButtonComponent from './ButtonComponent';
 const ButtonGoBack = () => {
     const history = useHistory()
 
-
-    const goBack = () => {
-        history.goBack()
-    }
-  return <div>
-      <ButtonComponent onClick={goBack} textButton='Voltar'/>
-  </div>;
-};
+    const goBack = () => history.goBack()
+    
+    return <ButtonComponent onClick={goBack} textButton='Voltar'/>
+}
 
 export default ButtonGoBack;

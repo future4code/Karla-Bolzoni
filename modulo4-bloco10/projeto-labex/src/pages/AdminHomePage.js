@@ -10,25 +10,20 @@ import CardTrip from '../components/CardTrip';
 const AdminHomePage = () => {
   const history = useHistory()
 
-  const goTocreateTrip = () => {
-    history.push("/admin/trips/create")
-  }
+  const goTocreateTrip = () => history.push("/admin/trips/create")
 
-  const goToHome = () => {
-    history.push("/")
-  }
+  const goToHome = () => history.push("/")
 
-const goToTripDetails = () => {
-  history.push("/admin/trips/:id")
-}
+  const goToTripDetails = () => history.push("/admin/trips/:id")
+
   return (
     <Box bg='gray.100' maxW='3xl'>
       <Titulo texto="Página Admin" />
       <ButtonGoBack />
       <CardTrip onClick={goToTripDetails}/>
-      <ButtonComponent onClick={goTocreateTrip} textButton="Criar Viagem" />
-      <ButtonComponent onClick={goToHome} textButton="Logout" />
 
+      <ButtonComponent onClick={goTocreateTrip} textButton="Criar Viagem"/>
+      <ButtonComponent onClick={goToHome} textButton="Logout"/>
     </Box>
   )
 };
