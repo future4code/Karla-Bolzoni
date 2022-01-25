@@ -5,7 +5,7 @@ import ButtonComponent from '../components/ButtonComponent'
 import { useHistory } from "react-router-dom";
 
 
-const HomePage = (props) => {
+export const HomePage = (props) => {
   const history = useHistory()
 
   const goToListTrips = () => history.push("/trips/list")
@@ -30,5 +30,3 @@ const HomePage = (props) => {
     </Box>
   )
 }
-
-export default HomePage

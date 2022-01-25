@@ -3,7 +3,7 @@ import ButtonComponent from '../components/ButtonComponent';
 import ButtonGoBack from '../components/ButtonGoBack';
 import Titulo from '../components/Titulo';
 
-const CreateTripPage = () => {
+export const CreateTripPage = () => {
   return <div>
     <Titulo texto="Criar uma nova viagem"/>
     <ButtonComponent textButton="Criar"/>
@@ -11,4 +11,3 @@ const CreateTripPage = () => {
   </div>;
 };
 
-export default CreateTripPage;

@@ -1,5 +1,4 @@
 import React from 'react';
-import Header from '../components/Header';
 import { Box } from '@chakra-ui/react'
 import Titulo from '../components/Titulo';
 import ButtonGoBack from '../components/ButtonGoBack';
@@ -7,7 +6,7 @@ import ButtonComponent from '../components/ButtonComponent';
 import { useHistory } from 'react-router-dom';
 import CardTrip from '../components/CardTrip';
 
-const AdminHomePage = () => {
+export const AdminHomePage = () => {
   const history = useHistory()
 
   const goTocreateTrip = () => history.push("/admin/trips/create")
@@ -27,5 +26,3 @@ const AdminHomePage = () => {
     </Box>
   )
 };
-
-export default AdminHomePage;

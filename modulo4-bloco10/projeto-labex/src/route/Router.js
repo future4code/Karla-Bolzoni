@@ -1,45 +1,42 @@
 import React from 'react';
-import AdminHomePage from "../pages/AdminHomePage";
-import ApplicationFormPage from "../pages/ApplicationFormPage";
-import CreateTripPage from "../pages/CreateTripPage";
-import ListTripsPage from "../pages/ListTripsPage";
-import LoginPage from "../pages/LoginPage";
-import TripDetailsPage from "../pages/TripDetailsPage";
-import HomePage from "../pages/HomePage";
-
+import {
+    AdminHomePage,
+    ApplicationFormPage,
+    CreateTripPage,
+    ListTripsPage,
+    LoginPage,
+    TripDetailsPage,
+    HomePage
+} from "../pages"
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-
-const Router = () => {
+export const Router = () => {
     return (
         <BrowserRouter>
             <Switch>
                 <Route exact path={"/"}>
-                    <HomePage/>
+                    <HomePage />
                 </Route>
                 <Route exact path={"/trips/list"}>
-                   <ListTripsPage/> 
+                    <ListTripsPage />
                 </Route>
                 <Route exact path={"/trips/application"}>
-                    <ApplicationFormPage/>
+                    <ApplicationFormPage />
                 </Route>
                 <Route exact path={"/login"}>
-                    <LoginPage/>
+                    <LoginPage />
                 </Route>
                 <Route exact path={"/admin/trips/list"}>
-                    <AdminHomePage/>
+                    <AdminHomePage />
                 </Route>
                 <Route exact path={"/admin/trips/create"}>
-                    <CreateTripPage/>
+                    <CreateTripPage />
                 </Route>
                 <Route exact path={"/admin/trips/:id"}>
-                    <TripDetailsPage/>
+                    <TripDetailsPage />
                 </Route>
-
-
             </Switch>
         </BrowserRouter>
     );
 };
 
-export default Router;

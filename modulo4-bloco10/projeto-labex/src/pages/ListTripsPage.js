@@ -25,7 +25,7 @@ width: 100wh;
 `
 
 
-const ListTripsPage = () => {
+export const ListTripsPage = () => {
   const history = useHistory()
 
   const goToApplicationTrip = () => history.push("/trips/application")
@@ -60,4 +60,4 @@ const ListTripsPage = () => {
   )
 }
 
-export default ListTripsPage;
+

@@ -8,11 +8,11 @@ import styled from 'styled-components';
 import { Stack } from '@chakra-ui/react';
 
 
-const ContainerForm = styled.div ` 
-width: 50%;
+export const ContainerForm = styled.div ` 
+width: 40%;
 `
 
-const ApplicationFormPage = () => { 
+export const ApplicationFormPage = () => { 
   
   return (
     <Container>
@@ -33,4 +33,3 @@ const ApplicationFormPage = () => {
   )
 }
 
-export default ApplicationFormPage;
