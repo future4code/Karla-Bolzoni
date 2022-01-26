@@ -7,7 +7,7 @@ font-family: 'Amatic SC', cursive;
 font-size: 60px;
 /* font-family: 'Comfortaa', cursive; */
 `
-const Header = () => {
+export const Header = () => {
     return ( 
         <Box bg='tomato'  width="100%" textAlign='center' color='white'>
             <Logo>LabeX</Logo>        
@@ -15,4 +15,3 @@ const Header = () => {
     )
 };
 
-export default Header;

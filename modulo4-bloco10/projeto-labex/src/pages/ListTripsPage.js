@@ -1,12 +1,9 @@
 import React from 'react';
-import ButtonComponent from '../components/ButtonComponent';
-import Titulo from '../components/Titulo';
 import { useHistory } from "react-router-dom";
 import { Stack } from '@chakra-ui/react';
-import ButtonGoBack from '../components/ButtonGoBack';
-import useRequestData from '../hooks/useRequestData'
-import CardTrips from '../components/CardTrips';
+import { useRequestData } from '../hooks/useRequestData'
 import styled from 'styled-components';
+import { ButtonComponent, Titulo, ButtonGoBack, CardTrips} from '../components'
 
 const ContainerTripList = styled.div`
 display: flex;

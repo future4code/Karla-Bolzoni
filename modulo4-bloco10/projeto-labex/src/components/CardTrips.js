@@ -17,7 +17,7 @@ box-shadow:         2px 1px 9px 0px rgba(50, 50, 50, 0.78);
 border-radius: 5px;
 `
 
-const CardTrips = (props) => {
+export const CardTrips = (props) => {
     return (
         <CardItem>
             <p><strong>{props.nameTrip}</strong></p>
@@ -30,4 +30,3 @@ const CardTrips = (props) => {
     );
 };
 
-export default CardTrips;

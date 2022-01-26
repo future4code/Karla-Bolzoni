@@ -1,12 +1,9 @@
 import React from 'react';
-import Titulo from '../components/Titulo';
-import ButtonComponent from '../components/ButtonComponent';
-import ButtonGoBack from '../components/ButtonGoBack';
 import { Input } from '@chakra-ui/react';
 import { Container } from './ListTripsPage';
 import styled from 'styled-components';
 import { Stack } from '@chakra-ui/react';
-
+import { ButtonComponent, ButtonGoBack, Titulo } from '../components'
 
 export const ContainerForm = styled.div ` 
 width: 40%;

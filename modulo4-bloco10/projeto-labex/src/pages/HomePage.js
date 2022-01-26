@@ -1,7 +1,6 @@
 import React from 'react';
 import { Box, Center, Stack } from '@chakra-ui/react';
-import Titulo from '../components/Titulo';
-import ButtonComponent from '../components/ButtonComponent'
+import {Titulo, ButtonComponent }from '../components';
 import { useHistory } from "react-router-dom";
 
 

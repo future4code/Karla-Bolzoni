@@ -1,7 +1,5 @@
 import React from 'react';
-import ButtonComponent from '../components/ButtonComponent';
-import ButtonGoBack from '../components/ButtonGoBack';
-import Titulo from '../components/Titulo';
+import {ButtonComponent, ButtonGoBack, Titulo} from '../components';
 
 export const CreateTripPage = () => {
   return <div>
