@@ -2,28 +2,23 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Input, Stack } from '@chakra-ui/react';
 import { ContainerForm } from './ApplicationFormPage';
-import { Container } from './ListTripsPage'
 import axios from 'axios';
 import { BASE_URL } from '../helpers/constants';
 import { setToken } from '../helpers/localStorage';
-import { ButtonComponent, Titulo, ButtonGoBack} from '../components'
+import { ButtonComponent, Titulo, ButtonGoBack, MainContainer} from '../components'
+import useForm from '../hooks/useForm';
 
 export const LoginPage = () => {
   const history = useHistory()
-  const [email, setEmail] = useState("")
-  const [senha, setSenha] = useState("")
+  const { form, onChange, cleanField } = useForm({
+    email: "",
+    password: ""
+  }) 
 
-  const handleName = ({target}) => setEmail(target.value)
-
-  const handleSenha = ({target}) => setSenha(target.value)
-
-  const onSubmitLogin = () => {
-    const body = {
-      email: email,
-      password: senha
-    }
+  const onSubmitLogin = (event) => {
+    event.preventDefault()
     axios
-    .post(`${BASE_URL}/login`, body)
+    .post(`${BASE_URL}/login`, form)
     .then(({data}) => {
       setToken(data.token)
       history.push('/admin/trips/list')
@@ -31,28 +26,37 @@ export const LoginPage = () => {
     .catch((err) => console.log(err))
   }
   return (
-    <Container>
+    <MainContainer>
       <Titulo texto="Página de login"/>
-      <ContainerForm>
-        <Input 
-          value={email}
-          onChange={handleName}
-          placeholder='email' 
+      <ButtonGoBack/>
+
+      <form onSubmit={onSubmitLogin}>
+        <Input
+          name={'email'}
+          value={form.email}
+          onChange={onChange}
+          placeholder={'email'} 
           m='3'
+          type={"email"}
+          required
         />
         <Input 
-          value={senha}
-          onChange={handleSenha}
-          placeholder='senha' 
+          name={"password"}
+          value={form.password}
+          onChange={onChange}
+          placeholder={'senha'}
           m='3'
+          pattern={"^.{6,}"}
+          title={"A senha deve ter no mínimo 6 caracteress"}
+          required
+          type={"password"}
         />
-      </ContainerForm>
-  
-      <Stack spacing={4} direction='row' align='center'>
-        <ButtonGoBack/>
-        <ButtonComponent onClick={onSubmitLogin} textButton="Entrar"/>
-      </Stack>
-    </Container>
+
+        <ButtonComponent  textButton="Entrar"/>
+
+
+      </form>
+    </MainContainer>
   )
 }
 

@@ -1,5 +1,5 @@
 import { BASE_URL } from '../helpers/constants';
-import { CardTrip, Titulo, ButtonGoBack, ButtonComponent, Loader, MainContainer, BoxButton } from '../components';
+import { CardTrip, Titulo, ButtonGoBack, ButtonComponent, Loader, MainContainer, BoxButton, Container } from '../components';
 import { useHistory } from 'react-router-dom';
 import { useProtectedPage } from '../hooks/useProtectedPage';
 import { useRequestData } from '../hooks/useRequestData';
@@ -32,16 +32,17 @@ export const AdminHomePage = () => {
   if (!tripListAdmin) return <Loader />
   return (
     <MainContainer>
+      <Container>
+        <Titulo texto="Administrar viagens" />
 
-      <Titulo texto="Administrar viagens" />
+        {tripListAdmin}
 
-      {tripListAdmin}
-
-      <BoxButton>
-        <ButtonComponent onClick={goTocreateTrip} textButton="Criar Viagem" />
-        <ButtonComponent onClick={goToHome} textButton="Logout" />
-        <ButtonGoBack />
-      </BoxButton>
+        <BoxButton>
+          <ButtonComponent onClick={goTocreateTrip} textButton="Criar Viagem" />
+          <ButtonComponent onClick={goToHome} textButton="Logout" />
+          <ButtonGoBack />
+        </BoxButton>
+      </Container>
 
     </MainContainer>
   )

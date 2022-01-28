@@ -1,15 +1,10 @@
 import React, { useState } from 'react';
-import { Input, Select } from '@chakra-ui/react';
-import styled from 'styled-components';
-import { BoxButton, ButtonComponent, ButtonGoBack, MainContainer, Titulo } from '../components'
+import { Container, Input, Select, Textarea } from '@chakra-ui/react';
+import { BoxButton, ButtonComponent, ButtonGoBack, MainContainer, Titulo, ContainerForm } from '../components'
 import axios from 'axios';
 import { useRequestData } from '../hooks/useRequestData';
 import { BASE_URL } from '../helpers/constants';
 import useForm from '../hooks/useForm'
-
-export const ContainerForm = styled.div` 
-width: 40%;
-`
 
 const axiosConfig = {
   headers: {
@@ -34,7 +29,6 @@ export const ApplicationFormPage = () => {
       .post(`${BASE_URL}/trips/${id}/apply`, form, axiosConfig)
       .then((res) => {
         alert("Enviado com sucesso")
-        cleanFields()
       })
       .catch((err) => {
         alert("ops, algo deu errado")
@@ -48,19 +42,20 @@ export const ApplicationFormPage = () => {
   const listCountry = useRequestData('https://servicodados.ibge.gov.br/api/v1/paises', [])
   
   return (
+    
     <MainContainer>
       <Titulo texto="Formulário de aplicação" />
 
       <ContainerForm>
-        <Select
-          m='3'
-          onChange={onChangeTripId}>
-          <option value={""}>Escolha seu destino</option>
-          {tripList.trips && tripList.trips.map((tripDestination) => <option key={tripDestination.id} value={tripDestination.id}>{tripDestination.name}</option>)}
+        <Select m='3' onChange={onChangeTripId}>
+          <option value="">Escolha seu destino</option>
+          {tripList.trips && tripList.trips.map(tripDestination => (
+          <option key={tripDestination.id} value={tripDestination.id}>
+            {tripDestination.name}
+          </option>
+          ))}
         </Select>
-
         <form onSubmit={(event) => ApplicationFormCandidate(event, tripId)}>
-
           <Input
             name={"name"}
             value={form.name}
@@ -82,16 +77,12 @@ export const ApplicationFormPage = () => {
             min={18}
           />
           <Select m='3' onChange={onChange} name={"country"}>
-            {listCountry && listCountry.map((pais) => {
-            return (
-              <option 
-                key={pais.id.M49} 
-                 
-                value={pais.nome.abreviado}>
+            <option value="">País</option>
+              {listCountry && listCountry.map(pais => (
+                <option key={pais.id.M49} value={pais.nome.abreviado}>
                   {pais.nome.abreviado}
-              </option>
-            )
-          })}
+                </option>
+              ))}
           </Select>
 
           <Input
@@ -104,7 +95,7 @@ export const ApplicationFormPage = () => {
             pattern={"^.{10,}"}
             title={"A profissão deve ter no mínimo 10 letras"}
           />
-          <Input
+          <Textarea
             name={"applicationText"}
             value={form.applicationText}
             onChange={onChange}
@@ -113,11 +104,9 @@ export const ApplicationFormPage = () => {
             required
           />
           <BoxButton>
-          <ButtonComponent textButton='Enviar' />
-          <ButtonGoBack />
+            <ButtonComponent textButton='Enviar' />
+            <ButtonGoBack />
           </BoxButton>
-          
-
         </form>
       </ContainerForm>
     </MainContainer>

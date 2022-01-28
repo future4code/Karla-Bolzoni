@@ -1,7 +1,7 @@
 import React from "react";
 import { ChakraProvider} from '@chakra-ui/react'
 import {Router} from "./route/Router";
-import {Header} from "./components";
+import {Header, MainContainer} from "./components";
 
 
 export function App() {
@@ -11,7 +11,6 @@ export function App() {
       
       <Router/>
       
-
     </ChakraProvider>
   )
 }

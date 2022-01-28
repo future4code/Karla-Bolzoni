@@ -1,6 +1,6 @@
 export * from './ButtonComponent'
 export * from './ButtonGoBack'
-export * from './CardCandidate'
+export * from './CandidateTableRow'
 export * from './CardTrip'
 export * from './CardTrips'
 export * from './Header'

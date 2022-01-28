@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { Stack } from '@chakra-ui/react';
 import { useRequestData } from '../hooks/useRequestData'
 import styled from 'styled-components';
-import { ButtonComponent, Titulo, ButtonGoBack, CardTrips} from '../components'
+import { ButtonComponent, Titulo, ButtonGoBack, CardTrips, MainContainer} from '../components'
 import { BASE_URL } from '../helpers/constants';
 
 const ContainerTripList = styled.div`
@@ -45,7 +45,7 @@ export const ListTripsPage = () => {
   })
 
   return (
-    <Container>
+    <MainContainer>
       <Titulo texto='Viagens programadas' />
 
       <ContainerTripList>
@@ -56,7 +56,7 @@ export const ListTripsPage = () => {
         <ButtonGoBack />
         <ButtonComponent onClick={goToApplicationTrip} textButton='Quero me inscrever' />
       </Stack>
-    </Container>
+    </MainContainer>
   )
 }
 

@@ -8,10 +8,12 @@ import {
   Titulo,
   Loader,
   CardTrips,
-  CardCandidate,
+  CandidateTableRow,
   MainContainer,
+  Container
 } from '../components'
 import { Table, Tbody, Th, Thead, Tr } from '@chakra-ui/react';
+import { MainTable } from '../components/MainTable';
 
 const axiosConfig = {
   headers: {
@@ -34,10 +36,10 @@ export const TripDetailsPage = () => {
       headers: {
         auth: localStorage.getItem("token")
       }
-    });
-    setTrip(data.trip);
-  };
-  
+    })
+    setTrip(data.trip)
+  }
+
   const decideCandidate = (tripId, candidateId, isApproved) => {
     const body = {
       approve: isApproved
@@ -49,59 +51,45 @@ export const TripDetailsPage = () => {
         getTrip(tripId)
       })
       .catch((err) => console.log(err))
-
   }
 
   const candidatesPedents = trip.candidates && trip.candidates.map((candidate) => {
-    return (
-      <>
-        <CardCandidate
-          key={candidate.id}
-          name={candidate.name}
-          profession={candidate.profession}
-          age={candidate.age}
-          country={candidate.country}
-          applicationText={candidate.applicationText}
-          decideCandidate={decideCandidate}
-          candidateId={candidate.id}
-          tripId={trip.id}
-        />
-      </>
-    )
+    candidate.tripId = trip.id
+    return candidate
+
   })
 
-  if (!trip) return <Loader />
+  const confirmedCandidates = trip.approved && trip.approved.map((candidateApproved) => {
+    candidateApproved.tripId = trip.id
+    return candidateApproved
+  })
+
+  if (!trip) return <Loader/>
   return (
     <MainContainer>
-      <Titulo texto="Detalhes da viagem" />
-      <CardTrips
-        nameTrip={trip.name}
-        planet={trip.planet}
-        date={trip.date}
-        description={trip.description}
-        durationInDays={trip.durationInDays}
-      />
+      <Container>
+        <Titulo texto="Detalhes da viagem" />
+        <CardTrips
+          nameTrip={trip.name}
+          planet={trip.planet}
+          date={trip.date}
+          description={trip.description}
+          durationInDays={trip.durationInDays}
+        />
+        <MainTable
+          title='Candidados Pendentes'
+          bodyTable={candidatesPedents}
+          showOptions={true}
+          decideCandidate={decideCandidate}
+        />
+        <MainTable
+          title='Viajantes confirmados'
+          bodyTable={confirmedCandidates}
+          showOptions={false}
+        />
 
-      <Titulo texto={"Candidatos Pendentes"} />
-      <Table maxW='md' variant='striped' colorScheme='purple'>
-        <Thead>
-          <Tr>
-            <Th>Nome</Th>
-            <Th>Profissão</Th>
-            <Th>Idade</Th>
-            <Th>País</Th>
-            <Th>Texto</Th>
-            <Th>Opções</Th>
-          </Tr>
-        </Thead>
-        <Tbody>
-          {candidatesPedents}
-        </Tbody>
-      </Table>
-
-      <Titulo texto="Candidatos Aprovados" />
-
-      <ButtonGoBack />
+        <ButtonGoBack />
+      </Container>
     </MainContainer>
   )
 }
