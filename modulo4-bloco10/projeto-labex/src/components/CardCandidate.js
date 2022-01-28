@@ -1,26 +1,21 @@
+import { Tr, Td, Button } from '@chakra-ui/react';
 import React from 'react';
-import styled from 'styled-components';
-import {ButtonComponent} from '../components';
+import {CheckIcon, CloseIcon} from '@chakra-ui/icons'
 
-const Cardzao = styled.div`
-border: 1px black solid;
-margin: 5px;
-border-radius: 5px;
-padding: 5px;
-`
+
 export const CardCandidate = (props) => {
   return (
-  <Cardzao>
-      <p>Nome: {props.name}</p>
-      <p>Proifissão: {props.profession}</p>
-      <p>Idade: {props.age}</p>
-      <p>País{props.country}</p>
-      <p>Aplicação: {props.applicationText}</p>
-      
+  <Tr key={props.id + props.candidateId} >
 
-      <ButtonComponent textButton='Aprovar'/>
-      <ButtonComponent textButton='Reprovar'/>
-  </Cardzao>
+      <Td>{props.name}</Td>
+      <Td>{props.profession}</Td>
+      <Td>{props.age}</Td>
+      <Td>{props.country}</Td>
+      <Td>{props.applicationText}</Td>
+      <Td><Button onClick={() => props.decideCandidate(props.tripId, props.candidateId, true)} ><CheckIcon /></Button></Td>
+      <Td><Button onClick={() => props.decideCandidate(props.tripId, props.candidateId, false)}><CloseIcon /></Button></Td>
+    
+  </Tr>
   );
 };
 

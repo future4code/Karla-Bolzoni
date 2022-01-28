@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Button } from '@chakra-ui/react';
+import { Spinner } from '@chakra-ui/react';
 
 const ContainerLoader = styled.div` 
 width: 300px;
@@ -12,8 +12,8 @@ align-items: center;
 `
 export const Loader = () => {
   return <ContainerLoader>
+    <Spinner size='xl' />
 
-    <Button isLoading colorScheme='teal' variant='solid'></Button>
   </ContainerLoader>;
 };
 

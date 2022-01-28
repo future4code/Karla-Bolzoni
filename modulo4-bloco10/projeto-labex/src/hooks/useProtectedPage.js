@@ -8,5 +8,5 @@ export const useProtectedPage = () => {
     useEffect(() => {
     const token = getToken()
     if(!token) history("/login")
-    }, [])
+    }, [history])
 }

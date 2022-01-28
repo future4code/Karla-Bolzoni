@@ -1,6 +1,5 @@
 import { BASE_URL } from '../helpers/constants';
-import { Box } from '@chakra-ui/react'
-import { CardTrip, Titulo, ButtonGoBack, ButtonComponent, Loader } from '../components';
+import { CardTrip, Titulo, ButtonGoBack, ButtonComponent, Loader, MainContainer, BoxButton } from '../components';
 import { useHistory } from 'react-router-dom';
 import { useProtectedPage } from '../hooks/useProtectedPage';
 import { useRequestData } from '../hooks/useRequestData';
@@ -23,22 +22,27 @@ export const AdminHomePage = () => {
     return (
       <>
         <CardTrip
-        key={trip.id}
+          key={trip.id}
           destino={trip.name}
-          onClick={() => goToTripDetails(trip.id)}/>
+          onClick={() => goToTripDetails(trip.id)} />
       </>
     )
   })
 
   if (!tripListAdmin) return <Loader />
   return (
-    <Box bg='gray.100' maxW='3xl'>
-      <Titulo texto="Página Admin" />
-      <ButtonGoBack />
+    <MainContainer>
+
+      <Titulo texto="Administrar viagens" />
+
       {tripListAdmin}
 
-      <ButtonComponent onClick={goTocreateTrip} textButton="Criar Viagem" />
-      <ButtonComponent onClick={goToHome} textButton="Logout" />
-    </Box>
+      <BoxButton>
+        <ButtonComponent onClick={goTocreateTrip} textButton="Criar Viagem" />
+        <ButtonComponent onClick={goToHome} textButton="Logout" />
+        <ButtonGoBack />
+      </BoxButton>
+
+    </MainContainer>
   )
 };

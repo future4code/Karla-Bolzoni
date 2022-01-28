@@ -25,6 +25,7 @@ export const CardTrips = (props) => {
             <p>Save the date: {props.date}</p>
             <p>Sabendo mais: {props.description}</p>
             <p>Por quanto tempo: {props.durationInDays} dias</p>
+            <p>id:{props.id}</p>
 
         </CardItem>
     );

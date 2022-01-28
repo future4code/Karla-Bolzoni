@@ -4,6 +4,7 @@ import { Stack } from '@chakra-ui/react';
 import { useRequestData } from '../hooks/useRequestData'
 import styled from 'styled-components';
 import { ButtonComponent, Titulo, ButtonGoBack, CardTrips} from '../components'
+import { BASE_URL } from '../helpers/constants';
 
 const ContainerTripList = styled.div`
 display: flex;
@@ -25,19 +26,21 @@ width: 100wh;
 export const ListTripsPage = () => {
   const history = useHistory()
 
+ 
   const goToApplicationTrip = () => history.push("/trips/application")
 
-  const tripList = useRequestData("https://us-central1-labenu-apis.cloudfunctions.net/labeX/karla-natany-joy/trips", {})
+  const tripList = useRequestData(`${BASE_URL}/trips`, {})
 
-  const tripListComponent = tripList.trips && tripList.trips.map((trip) => {
+  const tripListComponent = tripList.trips && tripList.trips.map((tripChoice) => {
     return (
       <CardTrips
-        key={trip.name}
-        nameTrip={trip.name}
-        planet={trip.planet}
-        date={trip.date}
-        description={trip.description}
-        durationInDays={trip.durationInDays} />
+        key={tripChoice.id}
+        nametrip={tripChoice.name}
+        planet={tripChoice.planet}
+        date={tripChoice.date}
+        description={tripChoice.description}
+        durationInDays={tripChoice.durationInDays}
+        id={tripChoice.id} />
     )
   })
 

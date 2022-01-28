@@ -5,7 +5,7 @@ import React from 'react';
 export const CardTrip = (props) => {
     return (
         <div>
-            <Box onClick={props.onClick} maxW='sm' height={32} borderWidth='1px' borderRadius='lg' overflow='hidden' bg='gray.300'>
+            <Box onClick={props.onClick} width={500} maxW='sm'  borderWidth='1px' borderRadius='lg' overflow='hidden' bg='gray.300' m={2} p={5}>
                 <h2>{props.destino}</h2>
             </Box>
         </div>
