@@ -8,11 +8,10 @@ import {
   Titulo,
   Loader,
   CardTrips,
-  CandidateTableRow,
   MainContainer,
-  Container
+  Container,
+  Title
 } from '../components'
-import { Table, Tbody, Th, Thead, Tr } from '@chakra-ui/react';
 import { MainTable } from '../components/MainTable';
 
 const axiosConfig = {
@@ -52,7 +51,6 @@ export const TripDetailsPage = () => {
       })
       .catch((err) => console.log(err))
   }
-
   const candidatesPedents = trip.candidates && trip.candidates.map((candidate) => {
     candidate.tripId = trip.id
     return candidate
@@ -68,7 +66,7 @@ export const TripDetailsPage = () => {
   return (
     <MainContainer>
       <Container>
-        <Titulo texto="Detalhes da viagem" />
+        <Title>Detalhes da viagem</Title>
         <CardTrips
           nameTrip={trip.name}
           planet={trip.planet}

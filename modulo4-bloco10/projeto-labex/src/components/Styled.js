@@ -8,6 +8,7 @@ flex-direction: column;
 align-items: center;
 width: 100%;
 height: auto;
+min-height: 100vh;
 justify-content: space-around;
 background-color: yellow;
 margin: auto;
@@ -17,27 +18,52 @@ export const Container = styled.div `
 background-color: #ffffff10;
 backdrop-filter: blur(12px);
 -webkit-backdrop-filter: blur(12px);
-width: 80%;
+max-width: 90vw;
+min-height: 600px;
 padding: 50px;
+border-radius: 5px;
+display: flex;
+justify-content: center;
+flex-direction: column;
+align-items: center;
 `
 export const BoxButton = styled.div` 
 display: flex;
 padding: 5px;
 column-gap: 20px;
 margin: 30px;
+justify-content: center;
 `
 export const ContainerForm = styled.div ` 
 width: 40%;
 `
+
+export const Subtitle = styled.p `
+font-family: "Courier New", Courier, monospace;
+font-size: 20px;
+color: #FD1E6A;
+font-weight: 800;
+text-decoration: none solid rgb(68, 68, 68);
+text-transform: uppercase;
+text-align: center;
+`
+
+export const Title = styled(Subtitle)`
+font-size: 50px;
+text-transform: capitalize;
+`
+
+
 export const Styled = () => {
   return <div>
     <MainContainer>
     <BoxButton>
     </BoxButton>
+    
     <Container/>
     <ContainerForm/>
     </MainContainer>
-      
+      <Subtitle></Subtitle>
     </div>
 };
 

@@ -5,7 +5,7 @@ import { CandidateTableRow } from '.';
 
 export const MainTable = (props) => {
     return <div>
-        <Table color='secundary' p={5} marginTop={10} >
+        <Table color='white' bg='#191718b8' p={5} marginTop={10} >
             <Thead>
                 <Tr bgColor='white' color='magenta'>
                     <Th color='magenta' textAlign="center" colSpan='6'>

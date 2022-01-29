@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+import { ButtonComponent, Subtitle } from '.';
 
-
-const CardItem = styled.div`
-background-color: black;
+export const CardItem = styled.div`
+background-color: #191718b8;
 width: 300px;
 height: 300px;
 display: flex;
@@ -15,19 +15,19 @@ color: white;
 -moz-box-shadow:    2px 1px 9px 0px rgba(50, 50, 50, 0.78);
 box-shadow:         2px 1px 9px 0px rgba(50, 50, 50, 0.78);
 border-radius: 5px;
+color: white;
 `
-
 export const CardTrips = (props) => {
     return (
         <CardItem>
-            <p><strong>{props.nameTrip}</strong></p>
-            <p>Qual nosso destino: {props.planet}</p>
-            <p>Save the date: {props.date}</p>
-            <p>Sabendo mais: {props.description}</p>
-            <p>Por quanto tempo: {props.durationInDays} dias</p>
-            <p>id:{props.id}</p>
+         <Subtitle>{props.nameTrip}</Subtitle>
+          <p>DESTINO: {props.planet}</p>
+          <p>DATA: {props.date}</p>
+          <p>DESCRIÇÃO: {props.description}</p>
+          <p>DURAÇÃO: {props.durationInDays} dias</p>
+          {/* <p>id:{props.id}</p> */}
+        {/* <ButtonComponent onClick={props.goToApplicationTrip} textButton='Quero me inscrever' /> */}
 
-        </CardItem>
-    );
-};
-
+          </CardItem>
+    )
+  }

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Container, Input, Select, Textarea } from '@chakra-ui/react';
-import { BoxButton, ButtonComponent, ButtonGoBack, MainContainer, Titulo, ContainerForm } from '../components'
+import { Input, Select, Textarea } from '@chakra-ui/react';
+import { BoxButton, ButtonComponent, ButtonGoBack, MainContainer, Container, Title } from '../components'
 import axios from 'axios';
 import { useRequestData } from '../hooks/useRequestData';
 import { BASE_URL } from '../helpers/constants';
@@ -44,10 +44,10 @@ export const ApplicationFormPage = () => {
   return (
     
     <MainContainer>
-      <Titulo texto="Formulário de aplicação" />
+      <Container>
+      <Title>Formulário de aplicação</Title>
 
-      <ContainerForm>
-        <Select m='3' onChange={onChangeTripId}>
+        <Select m='3' onChange={onChangeTripId} bg='white'>
           <option value="">Escolha seu destino</option>
           {tripList.trips && tripList.trips.map(tripDestination => (
           <option key={tripDestination.id} value={tripDestination.id}>
@@ -65,6 +65,7 @@ export const ApplicationFormPage = () => {
             required
             pattern={"^.{3,}"}
             title={"O nome deve ter no mínimo 3 letras"}
+            color='white'
           />
           <Input
             name={"age"}
@@ -75,8 +76,9 @@ export const ApplicationFormPage = () => {
             required
             type={"number"}
             min={18}
+            color='white'
           />
-          <Select m='3' onChange={onChange} name={"country"}>
+          <Select m='3' onChange={onChange} name={"country"} bg='white'>
             <option value="">País</option>
               {listCountry && listCountry.map(pais => (
                 <option key={pais.id.M49} value={pais.nome.abreviado}>
@@ -94,6 +96,7 @@ export const ApplicationFormPage = () => {
             required
             pattern={"^.{10,}"}
             title={"A profissão deve ter no mínimo 10 letras"}
+            color='white'
           />
           <Textarea
             name={"applicationText"}
@@ -102,13 +105,14 @@ export const ApplicationFormPage = () => {
             placeholder='Pq vc merece ir na viagem?'
             m='3'
             required
+            color='white'
           />
           <BoxButton>
-            <ButtonComponent textButton='Enviar' />
+            <ButtonComponent type="submit" textButton='Enviar' />
             <ButtonGoBack />
           </BoxButton>
         </form>
-      </ContainerForm>
+      </Container>
     </MainContainer>
   )
 }

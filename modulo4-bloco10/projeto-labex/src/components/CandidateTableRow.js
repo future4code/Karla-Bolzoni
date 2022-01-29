@@ -16,10 +16,10 @@ export const CandidateTableRow = (props) => {
       {props.showOptions && 
         <Td>
           <BoxButton>
-            <Button onClick={() => props.decideCandidate(props.tripId, props.candidateId, true)} >
+            <Button  variant='ghost' onClick={() => props.decideCandidate(props.tripId, props.candidateId, true)} >
               <CheckIcon />
             </Button>
-            <Button onClick={() => props.decideCandidate(props.tripId, props.candidateId, false)}>
+            <Button  variant='ghost' onClick={() => props.decideCandidate(props.tripId, props.candidateId, false)}>
               <CloseIcon />
             </Button>
           </BoxButton>

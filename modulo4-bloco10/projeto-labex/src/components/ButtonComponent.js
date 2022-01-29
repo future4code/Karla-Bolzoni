@@ -1,3 +1,4 @@
+import { Button } from '@chakra-ui/react';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -30,9 +31,9 @@ const MyButton = styled.button`
 export const ButtonComponent = (props) => {
     return (
         <div>
-            <MyButton onClick={props.onClick} colorScheme='teal' variant='outline'>
+            <Button type={props.type || 'button'} onClick={props.onClick} color='#F24E87' variant='solid' size='lg' bg='black'>
                 {props.textButton}
-            </MyButton>
+            </Button>
         </div>
     );
 };

@@ -1,5 +1,5 @@
 import { BASE_URL } from '../helpers/constants';
-import { CardTrip, Titulo, ButtonGoBack, ButtonComponent, Loader, MainContainer, BoxButton, Container } from '../components';
+import {Title, ButtonGoBack, ButtonComponent, Loader, MainContainer, BoxButton, Container, CardTripAdmin } from '../components';
 import { useHistory } from 'react-router-dom';
 import { useProtectedPage } from '../hooks/useProtectedPage';
 import { useRequestData } from '../hooks/useRequestData';
@@ -21,7 +21,7 @@ export const AdminHomePage = () => {
   const tripListAdmin = tripList.trips && tripList.trips.map((trip) => {
     return (
       <>
-        <CardTrip
+        <CardTripAdmin
           key={trip.id}
           destino={trip.name}
           onClick={() => goToTripDetails(trip.id)} />
@@ -33,7 +33,7 @@ export const AdminHomePage = () => {
   return (
     <MainContainer>
       <Container>
-        <Titulo texto="Administrar viagens" />
+        <Title>Administrar viagens</Title>
 
         {tripListAdmin}
 

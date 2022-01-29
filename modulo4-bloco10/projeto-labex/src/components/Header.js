@@ -9,7 +9,7 @@ font-size: 60px;
 `
 export const Header = () => {
     return ( 
-        <Box bg='tomato'  width="100%" textAlign='center' color='white'>
+        <Box bg='black'  width="100%" textAlign='center' color='#FD1E6A'>
             <Logo>LabeX</Logo>        
         </Box>
     )

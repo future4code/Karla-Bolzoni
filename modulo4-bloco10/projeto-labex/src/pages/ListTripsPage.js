@@ -1,32 +1,25 @@
+//ter o botão se inscrever em cada viagem e já ir a viagem para o application form.
+
 import React from 'react';
 import { useHistory } from "react-router-dom";
-import { Stack } from '@chakra-ui/react';
 import { useRequestData } from '../hooks/useRequestData'
 import styled from 'styled-components';
-import { ButtonComponent, Titulo, ButtonGoBack, CardTrips, MainContainer} from '../components'
+import { ButtonComponent, ButtonGoBack, CardTrips, MainContainer, Container, Title, BoxButton, Loader} from '../components'
 import { BASE_URL } from '../helpers/constants';
 
 const ContainerTripList = styled.div`
 display: flex;
-flex-direction: row;
-width: 100%;
+flex-direction:row;
+max-width: 1280px;
 height: 70vh;
-justify-content: space-around;
+justify-content: center;
 align-items: center;
 flex-wrap: wrap;
+column-gap: 15px;
 `
-export const Container = styled.div ` 
-display: flex;
-flex-direction: column;
-align-items: center;
-width: 100wh;
-`
-
-
 export const ListTripsPage = () => {
   const history = useHistory()
 
- 
   const goToApplicationTrip = () => history.push("/trips/application")
 
   const tripList = useRequestData(`${BASE_URL}/trips`, {})
@@ -35,27 +28,29 @@ export const ListTripsPage = () => {
     return (
       <CardTrips
         key={tripChoice.id}
-        nametrip={tripChoice.name}
+        nameTrip={tripChoice.name}
         planet={tripChoice.planet}
         date={tripChoice.date}
         description={tripChoice.description}
         durationInDays={tripChoice.durationInDays}
-        id={tripChoice.id} />
+        // id={tripChoice.id} 
+        goToApplicationTrip={goToApplicationTrip}/>
     )
   })
-
+  if (!tripListComponent) return <Loader/>
   return (
     <MainContainer>
-      <Titulo texto='Viagens programadas' />
+      <Container>
+        <Title>Viagens programadas</Title>
 
-      <ContainerTripList>
-        {tripListComponent}
-      </ContainerTripList>
-
-      <Stack spacing={4} direction='row' align='center'>
-        <ButtonGoBack />
-        <ButtonComponent onClick={goToApplicationTrip} textButton='Quero me inscrever' />
-      </Stack>
+        <ContainerTripList>
+          {tripListComponent}
+        </ContainerTripList>
+        <BoxButton>
+          <ButtonGoBack />
+          <ButtonComponent onClick={goToApplicationTrip} textButton='Quero me inscrever' />
+        </BoxButton>
+      </Container>
     </MainContainer>
   )
 }
