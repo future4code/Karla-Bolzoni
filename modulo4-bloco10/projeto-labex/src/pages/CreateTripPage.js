@@ -48,6 +48,7 @@ export const CreateTripPage = () => {
             title={"O nome da viagem deve ter no mínimo 5 letras"}
             color='white'
           />
+          
           <Select m='3' onChange={onChange} name="planet" bg='white'>
             <option value="">Escolha o destino</option>
             {planetsList.map((planetItem) => {
@@ -66,8 +67,8 @@ export const CreateTripPage = () => {
             required
             type={"date"}
             color='white'
-
           />
+
           <Input
             name={"description"}
             value={form.description}
@@ -95,11 +96,8 @@ export const CreateTripPage = () => {
             <ButtonComponent type='submit' textButton="Criar" />
             <ButtonGoBack />
           </BoxButton>
-
         </form>
       </Container>
-
-
     </MainContainer>
   )
 }

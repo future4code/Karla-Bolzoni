@@ -52,7 +52,6 @@ font-size: 50px;
 text-transform: capitalize;
 `
 
-
 export const Styled = () => {
   return <div>
     <MainContainer>

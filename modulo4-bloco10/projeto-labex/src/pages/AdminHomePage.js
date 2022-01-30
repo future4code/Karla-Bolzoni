@@ -11,12 +11,16 @@ export const AdminHomePage = () => {
   useProtectedPage()
 
   const history = useHistory()
+
   const goTocreateTrip = () => history.push("/admin/trips/create")
+
   const goToHome = () => history.push("/")
+
   const logOut = () => {
     clearToken() 
     history.push("/")
   }
+  
   const goToTripDetails = (id) => history.push(`/admin/trips/${id}`)
 
   const tripList = useRequestData(`${BASE_URL}/trips`, {})
@@ -42,14 +46,12 @@ export const AdminHomePage = () => {
     )
   })
 
-  if (!tripListAdmin) return <Loader />
+  if (!tripListAdmin) return <Loader/>
   return (
     <MainContainer>
       <Container>
         <Title>Administrar viagens</Title>
-
         {tripListAdmin}
-
         <BoxButton>
           <ButtonComponent onClick={goTocreateTrip} textButton="Criar Viagem" />
           <ButtonComponent onClick={logOut} textButton="Logout" />
@@ -58,4 +60,4 @@ export const AdminHomePage = () => {
       </Container>
     </MainContainer>
   )
-};
+}

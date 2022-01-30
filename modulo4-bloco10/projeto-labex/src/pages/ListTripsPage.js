@@ -33,10 +33,10 @@ export const ListTripsPage = () => {
         date={tripChoice.date}
         description={tripChoice.description}
         durationInDays={tripChoice.durationInDays}
-        // id={tripChoice.id} 
         goToApplicationTrip={goToApplicationTrip}/>
     )
   })
+  
   if (!tripListComponent) return <Loader/>
   return (
     <MainContainer>

@@ -11,12 +11,10 @@ import {
   Container,
   Title,
   BoxButton,
-  ButtonComponent
+  ButtonComponent,
+  MainTable
 } from '../components'
-import { MainTable } from '../components/MainTable';
 import { useHistory } from "react-router-dom";
-
-
 
 export const TripDetailsPage = () => {
   useProtectedPage()

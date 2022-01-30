@@ -26,11 +26,9 @@ export const LoginPage = () => {
         setToken(data.token)
         history.push('/admin/trips/list')
       })
-      .catch((err) => {
-        errorMessage(err, 'Login ou Senha incorretos')
-      })
-      
+      .catch(err => errorMessage(err, 'Login ou Senha incorretos'))   
   }
+
   return (
     <MainContainer>
       <Container>
@@ -47,6 +45,7 @@ export const LoginPage = () => {
             required
             color='white'
           />
+
           <Input
             name={"password"}
             value={form.password}
@@ -59,13 +58,12 @@ export const LoginPage = () => {
             type={"password"}
             color='white'
           />
+
           <BoxButton>
             <ButtonComponent type="submit" textButton="Entrar" />
             <ButtonGoBack />
           </BoxButton>
-
         </form>
-
       </Container>
     </MainContainer>
   )

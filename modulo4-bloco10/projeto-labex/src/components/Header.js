@@ -5,7 +5,6 @@ import styled from 'styled-components';
 const Logo = styled.p ` 
 font-family: "Courier New", Courier, monospace;
 font-size: 60px;
-/* font-family: 'Comfortaa', cursive; */
 `
 export const Header = () => {
     return ( 

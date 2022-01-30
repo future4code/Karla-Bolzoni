@@ -8,13 +8,14 @@ import useForm from '../hooks/useForm'
 
 export const ApplicationFormPage = () => {
   const { form, onChange } = useForm({
-    name: "",
-    age: "",
-    applicationText: "",
-    profession: "",
-    country: ""
+    name: '',
+    age: '',
+    applicationText: '',
+    profession: '',
+    country: ''
   })
   const [tripId, setTripId] = useState('')
+  
   const onChangeTripId = ({ target }) => setTripId(target.value)
 
   const ApplicationFormCandidate = (event, id) => {

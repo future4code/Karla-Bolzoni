@@ -11,9 +11,8 @@ justify-content: center;
 align-items: center;
 `
 export const Loader = () => {
-  return <ContainerLoader>
+  return <ContainerLoader> 
     <Spinner size='xl' />
-
   </ContainerLoader>;
 };
 
