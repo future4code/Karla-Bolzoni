@@ -26,17 +26,16 @@ display: flex;
 justify-content: center;
 flex-direction: column;
 align-items: center;
+margin-top: 10px;
 `
 export const BoxButton = styled.div` 
 display: flex;
 padding: 5px;
 column-gap: 20px;
-margin: 30px;
 justify-content: center;
+margin-top: 10px;
 `
-export const ContainerForm = styled.div ` 
-width: 40%;
-`
+
 
 export const Subtitle = styled.p `
 font-family: "Courier New", Courier, monospace;
@@ -61,7 +60,6 @@ export const Styled = () => {
     </BoxButton>
     
     <Container/>
-    <ContainerForm/>
     </MainContainer>
       <Subtitle></Subtitle>
     </div>

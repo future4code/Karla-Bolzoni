@@ -1,60 +1,52 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import { BASE_URL } from '../helpers/constants';
+import { BASE_URL, axiosConfigWithAuth, errorMessage, successMessage } from '../helpers';
 import { useProtectedPage } from '../hooks/useProtectedPage'
 import { useParams } from 'react-router-dom';
 import {
   ButtonGoBack,
-  Titulo,
   Loader,
   CardTrips,
   MainContainer,
   Container,
-  Title
+  Title,
+  BoxButton,
+  ButtonComponent
 } from '../components'
 import { MainTable } from '../components/MainTable';
+import { useHistory } from "react-router-dom";
 
-const axiosConfig = {
-  headers: {
-    'Content-Type': 'application/json',
-    auth: localStorage.getItem("token")
-  }
-}
+
+
 export const TripDetailsPage = () => {
-  const [trip, setTrip] = useState({})
-  const { id } = useParams()
-
   useProtectedPage()
 
-  useEffect(() => {
-    getTrip(id);
-  }, [id])
+  const [trip, setTrip] = useState({})
+  const { id } = useParams()
+  const history = useHistory()
+
+  useEffect(() => getTrip(id), [id])
+
+  const goToHome = () => history.push("/")
 
   const getTrip = async (id) => {
-    const { data } = await axios.get(`${BASE_URL}/trip/${id}`, {
-      headers: {
-        auth: localStorage.getItem("token")
-      }
-    })
+    const { data } = await axios.get(`${BASE_URL}/trip/${id}`, axiosConfigWithAuth)
     setTrip(data.trip)
   }
 
   const decideCandidate = (tripId, candidateId, isApproved) => {
-    const body = {
-      approve: isApproved
-    }
+    const body = { approve: isApproved }
     axios
-      .put(`${BASE_URL}/trips/${tripId}/candidates/${candidateId}/decide`, body, axiosConfig)
-      .then((res) => {
-        alert(`${isApproved ? "Aprovado" : "Rejeitado"} com sucesso`)
+      .put(`${BASE_URL}/trips/${tripId}/candidates/${candidateId}/decide`, body, axiosConfigWithAuth)
+      .then(async () => {
+        await successMessage(`${isApproved ? "Aprovado" : "Reprovado"} com sucesso`)
         getTrip(tripId)
       })
-      .catch((err) => console.log(err))
+      .catch(err => errorMessage(err, "Houve um erro ao mediar a inscrição."))
   }
   const candidatesPedents = trip.candidates && trip.candidates.map((candidate) => {
     candidate.tripId = trip.id
     return candidate
-
   })
 
   const confirmedCandidates = trip.approved && trip.approved.map((candidateApproved) => {
@@ -62,7 +54,7 @@ export const TripDetailsPage = () => {
     return candidateApproved
   })
 
-  if (!trip) return <Loader/>
+  if (!trip) return <Loader />
   return (
     <MainContainer>
       <Container>
@@ -85,8 +77,10 @@ export const TripDetailsPage = () => {
           bodyTable={confirmedCandidates}
           showOptions={false}
         />
-
-        <ButtonGoBack />
+        <BoxButton>
+          <ButtonComponent onClick={goToHome} textButton='Página Inicial'/>
+          <ButtonGoBack />
+        </BoxButton>
       </Container>
     </MainContainer>
   )

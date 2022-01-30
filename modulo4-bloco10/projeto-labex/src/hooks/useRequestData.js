@@ -2,19 +2,14 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 
 export const useRequestData = (url, initialState) => {
-    const [data, setData] = useState(initialState)
+  const [data, setData] = useState(initialState)
 
-    useEffect(() => {
-        axios
-        .get(url)
-        .then((res) => setData(res.data))
-        .catch((err) => console.log(err))
-    }, [url])
+  useEffect(() => {
+    axios
+      .get(url)
+      .then((res) => setData(res.data))
+      .catch((err) => console.log(err))
+  }, [url])
 
-    return data
+  return data
 }
-
-// export const useRequestDataAuth = (url, initialState, header) => {
-
-// }
-

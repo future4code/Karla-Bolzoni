@@ -1,19 +1,13 @@
+import { BASE_URL, axiosConfig, successMessage, errorMessage } from '../helpers';
 import React, { useState } from 'react';
 import { Input, Select, Textarea } from '@chakra-ui/react';
 import { BoxButton, ButtonComponent, ButtonGoBack, MainContainer, Container, Title } from '../components'
 import axios from 'axios';
 import { useRequestData } from '../hooks/useRequestData';
-import { BASE_URL } from '../helpers/constants';
 import useForm from '../hooks/useForm'
 
-const axiosConfig = {
-  headers: {
-    'Content-Type': 'application/json'
-  }
-}
-
 export const ApplicationFormPage = () => {
-  const { form, onChange, cleanFields } = useForm({
+  const { form, onChange } = useForm({
     name: "",
     age: "",
     applicationText: "",
@@ -27,32 +21,32 @@ export const ApplicationFormPage = () => {
     event.preventDefault()
     axios
       .post(`${BASE_URL}/trips/${id}/apply`, form, axiosConfig)
-      .then((res) => {
-        alert("Enviado com sucesso")
+      .then(async () => {
+          await successMessage(`Aplicação enviada com sucesso!`)
+          window.location.reload()
+
       })
-      .catch((err) => {
-        alert("ops, algo deu errado")
-        console.log(err);
+      .catch(err => {
+        errorMessage(err, "Algo deu errado ao enviar sua aplicação!")
       })
-    cleanFields()
   }
 
   const tripList = useRequestData(`${BASE_URL}/trips`, [])
 
   const listCountry = useRequestData('https://servicodados.ibge.gov.br/api/v1/paises', [])
-  
+
   return (
-    
+
     <MainContainer>
       <Container>
-      <Title>Formulário de aplicação</Title>
+        <Title>Formulário de aplicação</Title>
 
         <Select m='3' onChange={onChangeTripId} bg='white'>
           <option value="">Escolha seu destino</option>
           {tripList.trips && tripList.trips.map(tripDestination => (
-          <option key={tripDestination.id} value={tripDestination.id}>
-            {tripDestination.name}
-          </option>
+            <option key={tripDestination.id} value={tripDestination.id}>
+              {tripDestination.name}
+            </option>
           ))}
         </Select>
         <form onSubmit={(event) => ApplicationFormCandidate(event, tripId)}>
@@ -80,11 +74,11 @@ export const ApplicationFormPage = () => {
           />
           <Select m='3' onChange={onChange} name={"country"} bg='white'>
             <option value="">País</option>
-              {listCountry && listCountry.map(pais => (
-                <option key={pais.id.M49} value={pais.nome.abreviado}>
-                  {pais.nome.abreviado}
-                </option>
-              ))}
+            {listCountry && listCountry.map(pais => (
+              <option key={pais.id.M49} value={pais.nome.abreviado}>
+                {pais.nome.abreviado}
+              </option>
+            ))}
           </Select>
 
           <Input

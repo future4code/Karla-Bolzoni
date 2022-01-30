@@ -1,17 +1,21 @@
+import { BASE_URL, errorMessage, getToken, setToken } from '../helpers';
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { Input } from '@chakra-ui/react';
 import axios from 'axios';
-import { BASE_URL } from '../helpers/constants';
-import { setToken } from '../helpers/localStorage';
 import { ButtonComponent, ButtonGoBack, MainContainer, Container, Title, BoxButton } from '../components'
 import useForm from '../hooks/useForm';
 
 export const LoginPage = () => {
   const history = useHistory()
-  const { form, onChange, cleanField } = useForm({
-    email: "",
-    password: ""
+
+  if ( getToken() ){
+    history.push('/admin/trips/list')
+  }
+
+  const { form, onChange } = useForm({
+    email: "karlanatany3@gmail.com",
+    password: "281093"
   })
 
   const onSubmitLogin = (event) => {
@@ -22,8 +26,10 @@ export const LoginPage = () => {
         setToken(data.token)
         history.push('/admin/trips/list')
       })
-      .catch((err) => console.log(err))
-      cleanField()
+      .catch((err) => {
+        errorMessage(err, 'Login ou Senha incorretos')
+      })
+      
   }
   return (
     <MainContainer>

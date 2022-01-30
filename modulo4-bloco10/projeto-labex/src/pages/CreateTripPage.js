@@ -1,17 +1,15 @@
+import { BASE_URL, axiosConfigWithAuth, successMessage, errorMessage } from '../helpers';
 import React from 'react';
-import { BoxButton, ButtonComponent, ButtonGoBack, ContainerForm, MainContainer, Titulo } from '../components';
+import { BoxButton, ButtonComponent, ButtonGoBack, MainContainer, Container, Title } from '../components';
 import { Input, Select } from '@chakra-ui/react';
 import useForm from '../hooks/useForm';
 import axios from 'axios';
-import { BASE_URL } from '../helpers/constants';
+import { useProtectedPage } from '../hooks/useProtectedPage';
 
-const axiosConfig = {
-  headers: {
-    'Content-Type': 'application/json',
-    auth: localStorage.getItem("token")
-  }
-}
+
 export const CreateTripPage = () => {
+  useProtectedPage()
+
   const { form, onChange, cleanFields } = useForm({
     name: "",
     planet: "",
@@ -26,16 +24,18 @@ export const CreateTripPage = () => {
     event.preventDefault()
 
     axios
-      .post(`${BASE_URL}/trips`, form, axiosConfig)
-      .then(res => console.log(res))
-      .catch(err => console.log(err))
-
+      .post(`${BASE_URL}/trips`, form, axiosConfigWithAuth)
+      .then(res => {
+        successMessage(`${res.data.trip.name} foi criada com sucesso`)
+        cleanFields()
+      })
+      .catch(err => errorMessage(err, "Algo deu errado ao criar sua viagem!"))
   }
-  
+
   return (
     <MainContainer>
-      <Titulo texto="Criar uma nova viagem" />
-      <ContainerForm>
+      <Container>
+        <Title>Criar uma nova viagem</Title>
         <form onSubmit={creatTrip}>
           <Input
             name={"name"}
@@ -46,8 +46,9 @@ export const CreateTripPage = () => {
             required
             pattern={"^.{5,}"}
             title={"O nome da viagem deve ter no mínimo 5 letras"}
+            color='white'
           />
-          <Select m='3' onChange={onChange} name="planet">
+          <Select m='3' onChange={onChange} name="planet" bg='white'>
             <option value="">Escolha o destino</option>
             {planetsList.map((planetItem) => {
               return (
@@ -64,6 +65,8 @@ export const CreateTripPage = () => {
             m='3'
             required
             type={"date"}
+            color='white'
+
           />
           <Input
             name={"description"}
@@ -72,6 +75,9 @@ export const CreateTripPage = () => {
             placeholder='Descrição'
             m='3'
             required
+            pattern={"^.{30,}"}
+            title={"A descrição deve ter no mínimo 30 letras"}
+            color='white'
 
           />
           <Input
@@ -82,15 +88,18 @@ export const CreateTripPage = () => {
             m='3'
             required
             type={"number"}
+            color='white'
+            min={50}
           />
-            <ButtonComponent textButton="Criar" />
-          
-        </form>
-      </ContainerForm>
-
-      <BoxButton>
+          <BoxButton>
+            <ButtonComponent type='submit' textButton="Criar" />
             <ButtonGoBack />
           </BoxButton>
+
+        </form>
+      </Container>
+
+
     </MainContainer>
   )
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Titulo, ButtonComponent, MainContainer, BoxButton, Container } from '../components';
+import { ButtonComponent, MainContainer, BoxButton, Container } from '../components';
 import { useHistory } from "react-router-dom";
 
 
@@ -11,10 +11,9 @@ export const HomePage = (props) => {
   return (
     <MainContainer>
       <Container>
-        <Titulo texto='' />
       <BoxButton>
         <ButtonComponent onClick={goToListTrips} textButton='Conferir Viagens'/>
-        <ButtonComponent onClick={goToLogin} textButton='Fazer login'/>
+        <ButtonComponent onClick={goToLogin} textButton='Área Admin'/>
       </BoxButton>
       </Container>
     </MainContainer>
