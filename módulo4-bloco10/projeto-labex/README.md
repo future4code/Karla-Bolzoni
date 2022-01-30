@@ -8,6 +8,7 @@
 Área do usuário (viajante)
 - Visualização das viagens programadas;
 - Cadastro para aplicação em uma das viagens disponíveis;
+
 Área do usuário (admin)
 - Deletar viagens;
 - Aprovar ou reprovar candidatos;
