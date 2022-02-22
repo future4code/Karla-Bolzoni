@@ -10,7 +10,11 @@ const Photo = styled.img`
 width: 80%;
 height: 90%;
 border-radius: 5px;
-box-shadow: 0px 0px 90px;
+
+-webkit-box-shadow: 5px 5px 6px 0px rgba(50, 50, 50, 0.32);
+-moz-box-shadow:    5px 5px 6px 0px rgba(50, 50, 50, 0.32);
+box-shadow:         5px 5px 6px 0px rgba(50, 50, 50, 0.32);
+//box-shadow: 0px 0px 90px;
 `
 const Descricao = styled.p` 
 text-align: center;
