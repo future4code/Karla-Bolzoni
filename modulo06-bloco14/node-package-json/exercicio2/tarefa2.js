@@ -17,5 +17,6 @@ switch(operacao){
 		console.log(num1 / num2);     
     break;
     default:
-      console.log('Não temos nenhuma conta para mostrar');
+			console.log('Este script espera 3 parâmetros.Sendo o primeiro algum dentre estes (soma, subt, mult, div)');
+    	console.log('Exemplo: npm run calculadora soma 5 2')
 }

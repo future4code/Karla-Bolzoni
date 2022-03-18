@@ -5,4 +5,4 @@ console.log('Item adicionado com sucesso');
 
 const novaLista = listaTarefas.push(novoItem)
 
-console.log(listaTarefas);
+console.log(listaTarefas.join(', '));

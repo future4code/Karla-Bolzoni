@@ -5,7 +5,7 @@
   "main": "tarefa1.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "imprime-idade":"node tarefa1.js"
+    "start":"clear && node tarefa1.js"
   },
   "keywords": [],
   "author": "",

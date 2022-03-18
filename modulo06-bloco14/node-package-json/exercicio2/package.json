@@ -5,7 +5,7 @@
   "main": "tarefa2.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "calculo": "clear && node tarefa2.js"
+    "start": "clear && node tarefa2.js"
   },
   "keywords": [],
   "author": "",
