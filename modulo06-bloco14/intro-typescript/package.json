@@ -1,0 +1,24 @@
+{
+  "name": "intro-typescript",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start1": "tsc && node ./build/tarefa1.js",
+    "start2": "tsc && node ./build/tarefa2.js",
+    "start3": "tsc && node ./build/tarefa3.js",
+    "start4": "tsc && node ./build/tarefa4.js",
+    "start5": "tsc && node ./build/tarefa5.js",
+    "start6": "tsc && node ./build/tarefa6.js"
+
+  },
+
+  "author": "",
+  "license": "ISC",
+
+  "dependencies": {
+    "typescript": "^4.6.2"
+  }
+}
