@@ -1,0 +1,14 @@
+{
+  "name": "package-json",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "mostraDados": "clear && echo 'Exercício 1' && node exercicio1/tarefa1.js",
+    "calculadora": "clear && echo 'Exercício 2' && node exercicio2/tarefa2.js",
+    "listaTarefas": "clear && echo 'Exercício 3' && node exercicio3/tarefa3.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
