@@ -69,7 +69,7 @@ function filtraColaborador(colaboradores: Colaborador[]): Colaborador[] {
   })
 
 }
-console.log(filtraColaborador(colaboradoresLista));
+//console.log(filtraColaborador(colaboradoresLista));
 
 //Exercício 5
 enum Role {
@@ -99,4 +99,49 @@ function filterAdmin(users: User[]): string[] {
     .map((user) => user.email)
 }
 
-console.log(filterAdmin(Users));
+//console.log(filterAdmin(Users));
+
+//Exercício 6
+
+type Customer = {
+  cliente: string,
+  saldoTotal: number,
+  debitos: number[]
+}
+
+const Customers: Customer[] =
+  [
+    { cliente: "João", saldoTotal: 1000, debitos: [100, 200, 300] },
+    { cliente: "Paula", saldoTotal: 7500, debitos: [200, 1040] },
+    { cliente: "Pedro", saldoTotal: 10000, debitos: [5140, 6100, 100, 2000] },
+    { cliente: "Luciano", saldoTotal: 100, debitos: [100, 200, 1700] },
+    { cliente: "Artur", saldoTotal: 1800, debitos: [200, 300] },
+    //{ cliente: "Soter", saldoTotal: 1200, debitos: [] }
+  ]
+
+function filterCustomer(customers: Customer[]): Customer[] {
+  const debitCustomer: Customer[] = []
+
+  customers.forEach((customer: Customer) => {
+    let debits: number = 0
+    if (customer.debitos.length) {
+      debits = customer.debitos
+        .reduce((n1: number, n2: number) => n1 + n2)
+    }
+
+    const residual: number = customer.saldoTotal - debits
+
+    if (residual < 0) {
+      debitCustomer.push({
+        cliente: customer.cliente,
+        saldoTotal: residual,
+        debitos: []
+      })
+    }
+  })
+
+  return debitCustomer
+
+}
+
+console.log(filterCustomer(Customers));
