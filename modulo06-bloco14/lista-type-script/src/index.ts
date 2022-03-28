@@ -130,7 +130,6 @@ function filterCustomer(customers: Customer[]): Customer[] {
     }
 
     const residual: number = customer.saldoTotal - debits
-
     if (residual < 0) {
       debitCustomer.push({
         cliente: customer.cliente,
@@ -139,9 +138,135 @@ function filterCustomer(customers: Customer[]): Customer[] {
       })
     }
   })
-
   return debitCustomer
+}
+console.log(filterCustomer(Customers));
+
+//Exercício 7
+type ProdutoEstoque = {
+  nome: string,
+  quantidade: number,
+  valorUnitario: number | string
+}
+
+const Produtos: ProdutoEstoque[] =
+  [
+    { nome: "MacMugffin", quantidade: 37, valorUnitario: 51.040 },
+    { nome: "Vassoura voadora", quantidade: 56, valorUnitario: 210.0 },
+    { nome: "Laço da verdade", quantidade: 32, valorUnitario: 571.5 },
+    { nome: "O precioso", quantidade: 1, valorUnitario: 9181.923 },
+    { nome: "Caneta de 250 cores", quantidade: 123, valorUnitario: 17 },
+    { nome: "Plumbus", quantidade: 13, valorUnitario: 140.44 },
+    { nome: "Pokebola", quantidade: 200, valorUnitario: 99.9915 }
+  ]
+
+const ajustaPreco = (preco: number): string => {
+  const valorAjustado: string = preco.toFixed(2).replace('.', ',')
+  return "R$ " + valorAjustado
+}
+
+function consultaEstoque(produtos: ProdutoEstoque[]): ProdutoEstoque[] {
+
+  const precoAjustado = produtos
+    .map((produto) => {
+      produto.valorUnitario = ajustaPreco(produto.valorUnitario as number)
+
+      return produto
+    })
+    .sort((a, b) => a.quantidade - b.quantidade)
+
+  return precoAjustado
 
 }
 
-console.log(filterCustomer(Customers));
+console.log(consultaEstoque(Produtos));
+
+//Exercício 8
+function converteData(data: string): number {
+  const dataAtual = (new Date()).getTime()
+  const dataArray = data.split('/')
+  const dataRecebidaConvertida = `${dataArray[2]}/${dataArray[1]}/${dataArray[0]}`
+  const dataFormat = (new Date(dataRecebidaConvertida)).getTime()
+
+  const diferencaData = (dataAtual - dataFormat) / (1000 * 3600 * 24 * 365)
+
+  return diferencaData
+}
+
+function checaRenovacaoRg(dataNascimento: string, emissaoRG: string): boolean {
+  const idade = converteData(dataNascimento)
+  const tempoCarteira = converteData(emissaoRG)
+
+  if (idade <= 20) {
+    return tempoCarteira >= 5 ? true : false
+  } else if (idade >= 20 || idade <= 50) {
+    return tempoCarteira >= 10 ? true : false
+  } else if (idade > 50) {
+    return tempoCarteira >= 15 ? true : false
+  }
+}
+
+console.log('CHECA RENOVAÇÃO RG:', checaRenovacaoRg('07/12/1930', '01/10/2020'));
+
+// EXER 9
+
+function calculateFactorial(n: number): number {
+  let factorial = 1
+  for (let i = n; i > 1; i--) {
+    factorial *= i
+  }
+  
+  return factorial
+}
+
+function wordToFactorial(word: string): number {
+  const length = word.length
+  return calculateFactorial(length)
+}
+
+console.log(wordToFactorial("word"));
+
+function calculateTenthDigit(partialNumber: string): number {
+  let result = 0
+  let multiplier = 10
+  for (let i = 0; i <= 8 ; i++) {
+    result += Number(partialNumber.charAt(i)) * multiplier
+    multiplier--
+  }
+  const mod = result % 11
+  const tenthDigit = 11 - mod
+  
+  return tenthDigit >= 10 ? 0 : tenthDigit
+}
+
+function calculateEleventhDigit(partialNumber: string): number {
+  let result = 0
+  let multiplier = 11
+  for (let i = 0; i <= 9 ; i++) {
+    result += Number(partialNumber.charAt(i)) * multiplier
+    multiplier--
+  }
+  const mod = result % 11
+  const tenthDigit = 11 - mod
+  
+  return tenthDigit >= 10 ? 0 : tenthDigit
+}
+
+function validateCPF(cpf: string): boolean {
+  const splitedNumber = cpf.split('.')
+  const separateLastNumbers = splitedNumber[2].split('-')
+  const baseNumbers = `${splitedNumber[0]}${splitedNumber[1]}${separateLastNumbers[0]}`
+  const dv = separateLastNumbers[1]
+
+  const tenth = calculateTenthDigit(baseNumbers)
+  const eleventh = calculateEleventhDigit(baseNumbers+tenth)
+
+  const validCPF = `${baseNumbers}${tenth}${eleventh}`
+  cpf = `${baseNumbers}${dv}`
+  return validCPF === cpf
+}
+
+console.log(validateCPF('027.575.510-00'));
+console.log(validateCPF('849.474.110-15'));
+console.log(validateCPF('027.575.510-10'));
+console.log(validateCPF('849.474.110-25'));
