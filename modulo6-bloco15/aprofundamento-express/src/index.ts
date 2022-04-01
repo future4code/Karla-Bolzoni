@@ -1,8 +1,6 @@
 import express, { Request, Response } from "express";
 import { AddressInfo } from "net";
-import { GeneratedIdentifierFlags } from "typescript";
-import { Task } from './data'
-import { taskList } from "./data";
+import { Task, taskList } from './data'
 import { v4 as generateId } from 'uuid';
 
 const app = express();
@@ -13,14 +11,14 @@ app.get('/todos', (req: Request,res: Response) => {
   const taskStatus = taskList.filter((task) => {
     return task.completed === false
   })
-  res.send(taskStatus)
+  res.status(200).send(taskStatus)
 })
 
 app.get('/done', (req: Request,res: Response) => {
   const taskStatus = taskList.filter((task) => {
     return task.completed === true
   })
-  res.send(taskStatus)
+  res.status(200).send(taskStatus)
 })
 
 app.post('/todos', (req: Request, res: Response) => {
