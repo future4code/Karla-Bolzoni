@@ -1,3 +1,16 @@
+enum transactionType {
+  WITHDRAW = "Withdraw",
+  PAYMENT = "Payment",
+  DEPOSIT = "Deposit",
+  TRANSFER = "Transer"
+  
+}
+export type Transaction = {
+  value: number,
+  transaction: transactionType,
+  date: string
+
+} 
 //1) Crie um tipo para representar uma conta para o usuário
 
 export type Customer = { 
@@ -20,7 +33,13 @@ export const customerList : Customer[] = [
     "name" : "ana",
     "cpf": 12345458955,
     "birthDate" : "28/10/1993",
-    "transactions": [],
+    "transactions": [
+      {
+        "value": 56,
+        "date": '01/04/2022',
+        "transaction": transactionType.PAYMENT
+      }
+    ],
     "balance": 0
   },
   {
@@ -32,18 +51,3 @@ export const customerList : Customer[] = [
   }
 
 ]
-
-enum transactionType {
-  WITHDRAW = "Withdraw",
-  PAYMENT = "Payment",
-  DEPOSIT = "Deposit",
-  TRANSFER = "Transer"
-  
-}
-export type Transaction = {
-  value: number,
-  transaction: transactionType,
-  date: string
-
-} 
-
