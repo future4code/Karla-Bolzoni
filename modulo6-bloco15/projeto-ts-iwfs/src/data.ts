@@ -1,4 +1,4 @@
-enum transactionType {
+export enum transactionType {
   WITHDRAW = "Withdraw",
   PAYMENT = "Payment",
   DEPOSIT = "Deposit",
@@ -15,7 +15,7 @@ export type Transaction = {
 
 export type Customer = { 
   name: string,
-  cpf: number,
+  cpf: string,
   birthDate: string,
   transactions: Transaction[],
   balance: number
@@ -24,14 +24,14 @@ export type Customer = {
 export const customerList : Customer[] = [
   {
     "name" : "lucas",
-    "cpf": 12345678955,
+    "cpf": "12345678955",
     "birthDate" : "07/12/1990",
     "transactions": [],
     "balance": 10
   },
   {
     "name" : "ana",
-    "cpf": 12345458955,
+    "cpf": "12345458955",
     "birthDate" : "28/10/1993",
     "transactions": [
       {
@@ -44,10 +44,10 @@ export const customerList : Customer[] = [
   },
   {
     "name" : "josé",
-    "cpf": 12345878955,
+    "cpf": "12345878955",
     "birthDate" : "10/10/1993",
     "transactions": [],
-    "balance": 0
+    "balance": 20
   }
 
 ]
