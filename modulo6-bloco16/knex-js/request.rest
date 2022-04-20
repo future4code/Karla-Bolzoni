@@ -1,0 +1,18 @@
+### teste
+
+http://localhost:3003/users/001
+
+###
+http://localhost:3003/users/query?name=tONY
+
+###
+http://localhost:3003/users/countBy/gender/female
+
+
+###
+PUT http://localhost:3003/users/001/update/salary
+Content-Type: application/json
+
+{
+  "salary": 340000
+}
