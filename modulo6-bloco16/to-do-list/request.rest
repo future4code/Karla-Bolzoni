@@ -1,0 +1,39 @@
+
+##Criando usuário
+POST http://localhost:3003/user
+Content-Type: application/json
+
+{
+  "name": "Lucas Silva",
+	"nickname": "silvaLucas",
+	"email": "lucas@dev.com"
+}
+
+### buscando usuário pelo id
+GET http://localhost:3003/user/001
+
+### editando usuário
+PUT http://localhost:3003/user/edit/001
+Content-Type: application/json
+
+{
+	"nickname": "eujoao"
+}
+
+### criando nova tarefa
+POST http://localhost:3003/task
+Content-Type: application/json
+
+{
+	"title": ,
+	"description": "Devemos procurar vagas",
+	"limitDate": "30/04/2022",
+	"creatorUserId": "001"
+}
+
+### buscando tarefa pelo id
+GET http://localhost:3003/task/0054
+
+###
+
+GET http://localhost:3003/user/all
