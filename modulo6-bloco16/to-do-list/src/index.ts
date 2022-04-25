@@ -90,7 +90,7 @@ app.get("/user/:id", async (req: Request, res: Response): Promise<void> => {
 app.put("/user/edit/:id", async (req: Request, res: Response): Promise<void> => {
   try {
     const { id } = req.params
-    const { name, nickname} = req.body
+    const { name, nickname } = req.body
 
     if (!name || !nickname) {
       throw new Error(Errors.MISSING_PARAMETER.message)
@@ -102,11 +102,11 @@ app.put("/user/edit/:id", async (req: Request, res: Response): Promise<void> => 
     }
 
     await connection("User")
-    .update({
-      name: newUser.name,
-      nickname: newUser.nickname
-    })
-    .where({id})
+      .update({
+        name: newUser.name,
+        nickname: newUser.nickname
+      })
+      .where({ id })
 
     const result = await connection("User").where({ id })
 
@@ -117,10 +117,10 @@ app.put("/user/edit/:id", async (req: Request, res: Response): Promise<void> => 
   }
 })
 
-const transformData = (data:any) => {
+const transformData = (data: any) => {
   const dataArray = data.split('/')
   const defaulDataTransform = `${dataArray[2]}/${dataArray[1]}/${dataArray[0]}`
-  
+
   return defaulDataTransform
 }
 
@@ -129,7 +129,7 @@ app.post("/task", async (req: Request, res: Response): Promise<void> => {
     const { title, description, limitDate, creatorUserId } = req.body
     const dataConvert = transformData(limitDate)
 
-    if( !title || !description || !limitDate || !creatorUserId){
+    if (!title || !description || !limitDate || !creatorUserId) {
       throw new Error(Errors.MISSING_PARAMETER_TASK.message)
     }
     await connection("Task")
@@ -151,7 +151,7 @@ app.get("/task/:id", async (req: Request, res: Response): Promise<void> => {
   try {
     const { id } = req.params
     const result = await connection("Task").where({ id })
-    if(result.length === 0){
+    if (result.length === 0) {
       throw new Error(Errors.TASK_NOT_FOUND.message)
     }
     res.status(201).send(result)
