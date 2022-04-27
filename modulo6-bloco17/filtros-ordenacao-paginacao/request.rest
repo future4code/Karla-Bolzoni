@@ -1,0 +1,18 @@
+
+###  // endpoint - buscar todas as receitas com queries
+# GET http://localhost:3003/recipes?title=sopa&sort=title&order=DESC&page=1&size=2
+
+### - retorno padrão desse backend
+# GET http://localhost:3003/exercises?name=maju
+
+### 
+GET http://localhost:3003/exercises
+
+###
+GET http://localhost:3003/exercises/user?name=paula
+
+###
+GET http://localhost:3003/exercises/CX
+
+###
+get http://localhost:3003/orderExercises/cx
