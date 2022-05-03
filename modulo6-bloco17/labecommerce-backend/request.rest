@@ -3,9 +3,43 @@ POST http://localhost:3004/users
 Content-Type: application/json
 
 {
-  "name": "Natany",
-  "email": "natany@email.com",
-  "password": "987654"
+  "name": "ana",
+  "email": "ana@email.com",
+  "password": "852963"
+}
+
+###
+GET http://localhost:3004/users
+
+###
+POST http://localhost:3004/products 
+Content-Type: application/json
+
+{
+  "name": "Abacate",
+  "price": 99,
+  "imageUrl": "https://i.picsum.photos/id/0/5616/3744.jpg?hmac=3GAAioiQziMGEtLbfrdbcoenXoWAW-zlyEAMkfEdBzQ"
 }
 
 
+###
+GET http://localhost:3004/products
+
+
+###
+GET http://localhost:3004/product/45c7fbea-2fe8-4486-9654-ddfe82b06b02
+
+//45c7fbea-2fe8-4486-9654-ddfe82b06b02
+
+###
+POST  http://localhost:3004/purchases
+Content-Type: application/json
+
+ {  
+  "userId": "1",
+  "productId":"45c7fbea-2fe8-4486-9654-ddfe82b06b02",  
+  "quantity":2
+}
+
+###
+GET http://localhost:3004/users/1/purchases

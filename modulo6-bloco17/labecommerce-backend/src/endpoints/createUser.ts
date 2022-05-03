@@ -15,7 +15,7 @@ export const createUser = async (req: Request, res: Response): Promise<void> => 
       email,
       password
     }
-    const result = await insertUser(bodyUser)
+    await insertUser(bodyUser)
     res.send(201)
   } catch (error: any) {
     console.log(error)
