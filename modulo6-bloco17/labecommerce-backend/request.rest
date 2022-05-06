@@ -36,9 +36,9 @@ POST  http://localhost:3004/purchases
 Content-Type: application/json
 
  {  
-  "userId": "1",
+  "userId": "43947b89-1cdd-4a2a-b35b-294a55ab58a8",
   "productId":"45c7fbea-2fe8-4486-9654-ddfe82b06b02",  
-  "quantity":2
+  "quantity":4
 }
 
 ###

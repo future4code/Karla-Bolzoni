@@ -13,7 +13,7 @@ export default () => {
 
   app.use(express.json())
   app.use(cors())
-  app.get('/users/:userId/purhcases', getBuiesUser)
+  app.get('/users/:userId/purchases', getBuiesUser)
   app.get('/users', getUsers)
   app.post('/users', createUser)
   app.post('/products', insertProduct)

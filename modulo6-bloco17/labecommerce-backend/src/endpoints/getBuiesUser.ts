@@ -9,7 +9,7 @@ export const getBuiesUser = async (req: Request, res: Response): Promise<void> =
     const result = await selectPurchase(userId)
 
     res.status(200).send(result)
-    
+
   } catch (error: any) {
     console.log(error)
     res.status(500).send(error.message || error.sqlMessage)
@@ -18,9 +18,10 @@ export const getBuiesUser = async (req: Request, res: Response): Promise<void> =
 
 
 export default async function selectPurchase(id: string): Promise<any> {
+
   const result = await connection.raw(`
-  SELECT * FROM labecommerce_purchases WHERE id="${id}";`
+  SELECT * FROM labecommerce_purchases p WHERE p.user_id = "${id}"; `
   )
 
-  return result[0][0]
+  return result[0]
 }
