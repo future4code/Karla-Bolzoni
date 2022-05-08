@@ -1,12 +1,10 @@
 import { Request, Response } from "express"
 import { connection } from "../data/connection"
-import { Product, User } from "../types"
+import { Product } from "../types"
 import {v4 as uuidv4} from "uuid"
-
 
 export const insertProduct = async (req: Request, res: Response): Promise<void> => {
   try {
-
     const {  name, price, imageUrl } = req.body
     
     const bodyProduct: Product = {
@@ -22,7 +20,6 @@ export const insertProduct = async (req: Request, res: Response): Promise<void> 
     res.status(500).send(error.message || error.sqlMessage)
   }
 }
-
 
 export default async function postProduct( product: Product): Promise<any[]> {
   const image_url = product.imageUrl

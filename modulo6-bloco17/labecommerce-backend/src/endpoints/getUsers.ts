@@ -11,7 +11,6 @@ export const getUsers = async (req: Request, res: Response): Promise<void> => {
   }
 }
 
-
 export default async function selectUsers(): Promise<any[]> {
   const result = await connection.raw(`
   SELECT * FROM labecommerce_users; `
