@@ -1,0 +1,23 @@
+POST http://localhost:3003/user
+Content-Type: application/json
+
+{
+    "name": "Lucas",
+    "email": "lucas@email.com",
+    "password": "2343565"
+}
+
+###
+GET http://localhost:3003/user
+
+
+###
+POST http://localhost:3003/movie
+Content-Type: application/json
+
+{
+    "title": "Encanto",
+    "description": "Filme com a família Madrigal",
+    "durationInMinutes": 120,
+    "yearOfRelease": 2019
+}

@@ -1,0 +1,23 @@
+POST http://localhost:3003/user
+Content-Type: application/json
+
+{
+    "name": "NATANY",
+    "email": "natany@email.com",
+    "password": "23432535"
+}
+
+###
+GET http://localhost:3003/user
+
+
+###
+POST http://localhost:3003/movie
+Content-Type: application/json
+
+{
+    "title": "Meu malvado favorito",
+    "description": "gru e os minnions se aventuram",
+    "durationInMinutes": 120,
+    "yearOfRelease": 2018
+}
