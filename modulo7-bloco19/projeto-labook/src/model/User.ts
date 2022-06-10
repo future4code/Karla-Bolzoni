@@ -10,3 +10,7 @@ export interface UserInputDTO {
   email: string,
   password: string
 }
+
+// type authenticationData = {
+  // id: string
+// }

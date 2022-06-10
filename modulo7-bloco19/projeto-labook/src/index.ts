@@ -1,105 +1,74 @@
-/**************************** TYPES ******************************/
-
-type authenticationData = {
-   id: string
-}
+import { app } from "./app"
+import { userRouter } from "./controller/routes/userRouter"
 
 
+app.use("/user", userRouter)
 
-/**************************** ENDPOINTS ******************************/
 
-app.post('/users', async (req: Request, res: Response) => {
-   try {
-      let message = "Success!"
-      const { name, email, password } = req.body
 
-      if (!name || !email || !password) {
-         res.statusCode = 406
-         message = '"name", "email" and "password" must be provided'
-         throw new Error(message)
-      }
 
-      const id: string = generateId()
+// app.post('/post', async (req: Request, res: Response) => {
+//    try {
+//       let message = "Success!"
 
-      await connection('labook_users')
-         .insert({
-            id,
-            name,
-            email,
-            password
-         })
+//       const { photo, description, type, authorId } = req.body
 
-      res.status(201).send({ message })
+//       const postId: string = generateId()
 
-   } catch (error:any) {
-      res.statusCode = 400
-      let message = error.sqlMessage || error.message
-      res.send({ message })
-   }
-})
+//       await connection("labook_posts")
+//          .insert({
+//             id:postId,
+//             photo,
+//             description,
+//             type,
+//             author_id: authorId
+//          })
 
-app.post('/post', async (req: Request, res: Response) => {
-   try {
-      let message = "Success!"
+//       res.status(201).send({ message })
 
-      const { photo, description, type, authorId } = req.body
+//    } catch (error:any) {
+//       let message = error.sqlMessage || error.message
+//       res.statusCode = 400
+//       res.send({ message })
+//    }
+// })
 
-      const postId: string = generateId()
+// app.get('/posts/:id', async (req: Request, res: Response) => {
+//    try {
+//       let message = "Success!"
 
-      await connection("labook_posts")
-         .insert({
-            id:postId,
-            photo,
-            description,
-            type,
-            author_id: authorId
-         })
+//       const { id } = req.params
 
-      res.status(201).send({ message })
+//       const queryResult: any = await connection("labook_posts")
+//          .select("*")
+//          .where({ id })
 
-   } catch (error:any) {
-      let message = error.sqlMessage || error.message
-      res.statusCode = 400
-      res.send({ message })
-   }
-})
+//       if (!queryResult[0]) {
+//          res.statusCode = 404
+//          message = "Post not found"
+//          throw new Error(message)
+//       }
 
-app.get('/posts/:id', async (req: Request, res: Response) => {
-   try {
-      let message = "Success!"
+//       const post: post = {
+//          id: queryResult[0].id,
+//          photo: queryResult[0].photo,
+//          description: queryResult[0].description,
+//          type: queryResult[0].type,
+//          createdAt: queryResult[0].created_at,
+//          authorId: queryResult[0].author_id,
+//       }
 
-      const { id } = req.params
+//       res.status(200).send({ message, post })
 
-      const queryResult: any = await connection("labook_posts")
-         .select("*")
-         .where({ id })
+//    } catch (error:any) {
+//       let message = error.sqlMessage || error.message
+//       res.statusCode = 400
+//       res.send({ message })
+//    }
+// })
 
-      if (!queryResult[0]) {
-         res.statusCode = 404
-         message = "Post not found"
-         throw new Error(message)
-      }
+// /**************************** SERVER INIT ******************************/
 
-      const post: post = {
-         id: queryResult[0].id,
-         photo: queryResult[0].photo,
-         description: queryResult[0].description,
-         type: queryResult[0].type,
-         createdAt: queryResult[0].created_at,
-         authorId: queryResult[0].author_id,
-      }
-
-      res.status(200).send({ message, post })
-
-   } catch (error:any) {
-      let message = error.sqlMessage || error.message
-      res.statusCode = 400
-      res.send({ message })
-   }
-})
-
-/**************************** SERVER INIT ******************************/
-
-app.listen(3003, () => {
-   console.log("Server running on port 3003")
-})
+// app.listen(3003, () => {
+//    console.log("Server running on port 3003")
+// })
