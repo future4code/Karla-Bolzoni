@@ -4,6 +4,7 @@ export type user = {
    password: string
    name: string
    nickname: string
+   role: string
 }
 
 export interface UserInputDTO {
@@ -11,6 +12,7 @@ export interface UserInputDTO {
    nickname: string,
    email: string,
    password: string
+   role: string
 }
 
 export interface LoginInputDTO {
@@ -32,5 +34,6 @@ export interface EditUserInput {
 }
 
 export interface AuthenticationData {
-   id: string
+   id: string,
+   role: string
 }

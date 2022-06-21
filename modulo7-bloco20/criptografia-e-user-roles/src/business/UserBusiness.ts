@@ -9,20 +9,23 @@ import {
 } from "../model/user";
 import { IdGenerator } from "../services/IdGenerator";
 import { TokenGenerator } from "../services/TokenGenerator";
+import { HashManager } from "../services/HashManager";
 
 const idGenerator = new IdGenerator()
 const tokenGenerator = new TokenGenerator()
 const userDatabase = new UserDatabase();
+const hashManager = new HashManager();
 
 export class UserBusiness {
   public createUser = async (input: UserInputDTO): Promise<string> => {
     try {
-      const { name, nickname, email, password } = input;
+      let { name, nickname, email, password, role } = input;
 
-      if (!name || !nickname || !email || !password) {
+
+      if (!name || !nickname || !email || !password || !role) {
         throw new CustomError(
           400,
-          'Preencha os campos "name","nickname", "email" e "password"'
+          'Preencha os campos "name","nickname", "email", "password" e "role"'
         );
       }
 
@@ -34,18 +37,26 @@ export class UserBusiness {
         throw new InvalidEmail();
       }
 
+      // if (role !== "NORMAL" && role !== "ADMIN"){
+        // role = "NORMAL"
+      // }
+
       const id: string = idGenerator.generateId()
+
+      const hashPassword = await hashManager.generateHash(password)
 
       const user: user = {
         id,
         name,
         nickname,
         email,
-        password,
+        password: hashPassword,
+        role
       };
    
       await userDatabase.insertUser(user);
-      const token = tokenGenerator.generateToken(id)
+
+      const token = tokenGenerator.generateToken(id, role)
 
       return token
     } catch (error: any) {

@@ -3,6 +3,7 @@ import { EditUserInput, user } from "../model/user";
 import { BaseDatabase } from "./BaseDatabase";
 
 export class UserDatabase extends BaseDatabase {
+ 
   public findUser = async (email: string) => {
     try {
   
@@ -26,6 +27,7 @@ export class UserDatabase extends BaseDatabase {
           nickname: user.nickname,
           email: user.email,
           password: user.password,
+          role: user.role
         })
         .into("Auth_users");
     } catch (error: any) {
