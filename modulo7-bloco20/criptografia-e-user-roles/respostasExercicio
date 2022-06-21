@@ -1,0 +1,9 @@
+1- a) O que são os round e salt? Que valores são recomendados para o round? Que valor você usou? por quê?
+Round ou cost(custo-numérico) está relacionado à segurança da senha. Quanto maior o round, maior o tempo de execução do alagoritmo.
+Os valores recomendados para round vai depender do sistema, porém é recomendado utilizar o maior que conseguir para os equipamentos utilizados rodarem no tempo desejado.
+Utilizei o round de 12 por ser o padrão da maioria das libs.
+
+Salt é uma string aleatória gerada antes de criar o hash que é gerado através da função genSalt(cost)
+
+2-a) a) Para realizar os testes corretamente, qual deles você deve modificar primeiro? O cadastro ou o login? Justifique.
+Primeiro é realizado o cadastro, pois precisaremos comparar a senha cadastrada com a senha inserida no momento de logar.
