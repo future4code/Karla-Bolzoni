@@ -6,6 +6,7 @@ import {
   EditUserInputDTO,
   EditUserInput,
   LoginInputDTO,
+  AuthenticationData,
 } from "../model/user";
 import { IdGenerator } from "../services/IdGenerator";
 import { TokenGenerator } from "../services/TokenGenerator";
@@ -38,7 +39,7 @@ export class UserBusiness {
       }
 
       // if (role !== "NORMAL" && role !== "ADMIN"){
-        // role = "NORMAL"
+      // role = "NORMAL"
       // }
 
       const id: string = idGenerator.generateId()
@@ -53,10 +54,14 @@ export class UserBusiness {
         password: hashPassword,
         role
       };
-   
+
       await userDatabase.insertUser(user);
 
-      const token = tokenGenerator.generateToken(id, role)
+      const inputToken: AuthenticationData = {
+        id: user.id,
+        role: user.role
+      }
+      const token = tokenGenerator.generateToken(inputToken)
 
       return token
     } catch (error: any) {
@@ -67,7 +72,7 @@ export class UserBusiness {
   public login = async (input: LoginInputDTO): Promise<string> => {
     try {
       const { email, password } = input;
-    
+
       if (!email || !password) {
         throw new CustomError(
           400,
@@ -80,17 +85,22 @@ export class UserBusiness {
       }
 
       const user = await userDatabase.findUser(email);
+      const hashComparison = await hashManager.compareHash(password, user.password)
+
+      if (!hashComparison) {
+        throw new InvalidPassword
+      }
 
       if (!user) {
         throw new UserNotFound()
       }
 
-      if(password !== user.password){ 
-        throw new InvalidPassword()
+      const payload: AuthenticationData = {
+        id: user.id,
+        role: user.role
       }
+      const token = tokenGenerator.generateToken(payload)
 
-      const token = tokenGenerator.generateToken(user.id)
-     
       return token
     } catch (error: any) {
       throw new CustomError(400, error.message);
@@ -110,7 +120,7 @@ export class UserBusiness {
 
       const data = tokenGenerator.tokenData(token)
 
-      if(!data.id) {
+      if (!data.id) {
         throw new Unauthorized()
       }
 
@@ -130,4 +140,14 @@ export class UserBusiness {
       throw new CustomError(400, error.message);
     }
   };
+
+  public getUserProfile = (token: string) => {
+    const authenticationData = tokenGenerator.tokenData(token);        
+
+    if (authenticationData.role.toLowerCase() !== "normal") {
+      throw new Error("Only a normal user can access this funcionality");
+    }
+
+    return userDatabase.getUser(authenticationData.id);
+  }
 }
