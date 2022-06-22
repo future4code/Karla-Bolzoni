@@ -1,0 +1,19 @@
+###
+POST http://localhost:3003/user 
+Content-Type: application/json
+
+{
+"name": "Lucas", "email": "lucas@email.com", "password": "2343565"
+}
+
+###
+POST http://localhost:3003/post
+Content-Type: application/json
+
+{
+  "photo": "https://images.unsplash.com/photo-1652355293075-a533d94645e8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=736&q=80",
+  "description": "Piano é arte!",
+  "type": "normal",
+  "createdAt": "1998-05-17"
+}
+
