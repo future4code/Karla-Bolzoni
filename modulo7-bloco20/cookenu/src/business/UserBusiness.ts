@@ -1,5 +1,5 @@
 import { UserDatabase } from "../data/UserDatabase";
-import { CustomError, InvalidEmail, InvalidName, InvalidPassword, UserNotFound } from "../error/customError";
+import { CustomError, InvalidEmail, InvalidName, InvalidPassword, Unauthorized, UserNotFound } from "../error/customError";
 import {
   UserInputDTO,
   User,
@@ -92,6 +92,19 @@ export class UserBusiness {
   public profileUser = (token: string) => {
     const authenticationData = tokenGenerator.tokenData(token)
 
+    if (!authenticationData.id) {
+      throw new Unauthorized()
+    }
+
     return userDatabase.getUser(authenticationData.id)
+  }
+
+  public getAnotherUserProfile = (id: string, token: string) => {
+    const authenticationData = tokenGenerator.tokenData(token)
+
+    if (!authenticationData.id) {
+      throw new Unauthorized()
+    }
+    return userDatabase.getUser(id)
   }
 }

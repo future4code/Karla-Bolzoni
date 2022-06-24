@@ -1,5 +1,5 @@
 import { RecipeDataBase } from "../data/RecipeDatabase"
-import { CustomError } from "../error/customError"
+import { CustomError, Unauthorized } from "../error/customError"
 import { Recipe, RecipeInputDTO } from "../model/recipe"
 import { IdGenerator } from "../services/IdGenerator"
 import { TokenGenerator } from "../services/TokenGenerator"
@@ -9,6 +9,7 @@ const tokenGenerator = new TokenGenerator()
 const idGenerator = new IdGenerator()
 
 export class RecipeBusiness {
+ 
   public createRecipe = async (input: RecipeInputDTO,token:string) => {
     
     const authenticationData = tokenGenerator.tokenData(token)
@@ -28,5 +29,15 @@ export class RecipeBusiness {
     }
 
     await recipeDatabase.insertRecipe(recipe, authenticationData.id)
+  }
+
+  public getRecipe = (id: string, token: string,) => {
+    const authenticationData = tokenGenerator.tokenData(token)
+    
+    if (!authenticationData.id) {
+      throw new Unauthorized()
+    }
+
+    return recipeDatabase.getRecipe(id)
   }
 }

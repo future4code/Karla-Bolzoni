@@ -6,55 +6,69 @@ const userBusiness = new UserBusiness()
 
 export class UserController {
 
-      public signup = async (req: Request, res: Response) => {
-        try {
-          const { name, email, password } = req.body
-       
-          const input: UserInputDTO = {
-            name,
-            email,
-            password,
-          }
+  public signup = async (req: Request, res: Response) => {
+    try {
+      const { name, email, password } = req.body
 
-          const token = await userBusiness.createUser(input);
-    
-          res.status(201).send({ message: "Usuário criado!",input, token });
-        } catch (error: any) {
-          res.status(400).send(error.message);
-        }
-      }
-      
-      public login = async (req: Request, res: Response) => {
-        try {
-          const { email, password } = req.body;
-    
-          const input: LoginInputDTO = {
-            email,
-            password,
-          }
-
-          const token = await userBusiness.login(input);
-    
-          res.status(200).send({ message: "Usuário logado!", token });
-        } catch (error: any) {
-          res.status(400).send(error.message);
-        }
+      const input: UserInputDTO = {
+        name,
+        email,
+        password,
       }
 
-      public userProfile = async (req: Request, res: Response) => {
-        try {
-          const token = req.headers.authorization as string
+      const token = await userBusiness.createUser(input);
 
-          const user = await userBusiness.profileUser(token)
+      res.status(201).send({ message: "Usuário criado!", input, token });
+    } catch (error: any) {
+      res.status(400).send(error.message);
+    }
+  }
 
-          res.status(200).send(user)
+  public login = async (req: Request, res: Response) => {
+    try {
+      const { email, password } = req.body;
 
-        } catch (error:any) {
-          res.status(400).send({
-            message: error.message,
-          });
-        }
+      const input: LoginInputDTO = {
+        email,
+        password,
       }
-      
-  
+
+      const token = await userBusiness.login(input);
+
+      res.status(200).send({ message: "Usuário logado!", token });
+    } catch (error: any) {
+      res.status(400).send(error.message);
+    }
+  }
+
+  public userProfile = async (req: Request, res: Response) => {
+    try {
+      const token = req.headers.authorization as string
+
+      const user = await userBusiness.profileUser(token)
+
+      res.status(200).send(user)
+
+    } catch (error: any) {
+      res.status(400).send({
+        message: error.message,
+      });
+    }
+  }
+
+  public getAnotherUserProfile = async (req: Request, res: Response) => {
+    try {
+      const token = req.headers.authorization as string
+      const { id } = req.params
+
+      const user = await userBusiness.getAnotherUserProfile(id, token)
+
+      res.status(200).send(user)
+    } catch (error: any) {
+      res.status(400).send({
+        message: error.message
+      })
+
+    }
+  }
 }

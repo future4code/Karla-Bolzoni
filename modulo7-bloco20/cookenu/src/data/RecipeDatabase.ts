@@ -18,4 +18,14 @@ export class RecipeDataBase extends BaseDatabase {
       throw new CustomError(400, error.message)
     }
   }
+
+  public getRecipe = (id: string) => {
+    try {
+      return RecipeDataBase.connection(RecipeDataBase.TABLE_RECIPE)
+      .select()
+      .where({id})
+    } catch (error: any) {
+      throw new CustomError(404, error.message)
+    }
+  }
 }
