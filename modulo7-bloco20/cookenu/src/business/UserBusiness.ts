@@ -87,6 +87,11 @@ export class UserBusiness {
     } catch (error: any) {
       throw new CustomError(400, error.message);
     }
-  };
+  }
 
+  public profileUser = (token: string) => {
+    const authenticationData = tokenGenerator.tokenData(token)
+
+    return userDatabase.getUser(authenticationData.id)
+  }
 }

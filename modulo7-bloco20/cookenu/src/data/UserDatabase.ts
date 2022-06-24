@@ -32,4 +32,15 @@ export class UserDatabase extends BaseDatabase {
       throw new CustomError(400, error.message);
     }
   }
+
+  public getUser = (id: string) => {
+    try {
+      return UserDatabase.connection(UserDatabase.TABLE_USER)
+        .select('id', 'name', 'email')
+        .where({ id })
+    } catch (error: any) {
+      throw new CustomError(404, error.message)
+    }
+  }
+
 }
