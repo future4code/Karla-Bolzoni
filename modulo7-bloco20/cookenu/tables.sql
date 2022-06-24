@@ -14,3 +14,10 @@ CREATE TABLE IF NOT EXISTS Recipe_cookenu (
 );
 
 DESCRIBE Recipe_cookenu;
+
+SELECT * FROM Users_cookenu;
+
+ALTER TABLE Recipe_cookenu
+MODIFY COLUMN  creation_date TIMESTAMP DEFAULT NOW();
+
+SELECT * FROM `Recipe_cookenu`;
