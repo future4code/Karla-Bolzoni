@@ -13,7 +13,17 @@ CREATE TABLE IF NOT EXISTS Recipe_cookenu (
     creation_date DATE NOT NULL
 );
 
+CREATE TABLE IF NOT EXISTS User_friends (
+    user VARCHAR(64),
+    user_follow_id VARCHAR(64),
+    PRIMARY KEY (user, user_follow_id),
+    FOREIGN KEY (user) REFERENCES Users_cookenu(id),
+    FOREIGN KEY (user_follow_id) REFERENCES Users_cookenu(id)
+);
+
 DESCRIBE Recipe_cookenu;
+DESCRIBE User_friends;
+
 
 SELECT * FROM Users_cookenu;
 
@@ -21,3 +31,8 @@ ALTER TABLE Recipe_cookenu
 MODIFY COLUMN  creation_date TIMESTAMP DEFAULT NOW();
 
 SELECT * FROM `Recipe_cookenu`;
+
+ALTER TABLE `Users_cookenu`
+ADD COLUMN role_user VARCHAR(255);
+
+DROP TABLE `Recipe_users`;

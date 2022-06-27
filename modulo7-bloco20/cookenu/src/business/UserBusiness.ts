@@ -4,21 +4,24 @@ import {
   UserInputDTO,
   User,
   LoginInputDTO,
+  AuthenticationData,
 } from "../model/user";
+import { HashManager } from "../services/HashManager";
 import { IdGenerator } from "../services/IdGenerator";
 import { TokenGenerator } from "../services/TokenGenerator";
 
 const idGenerator = new IdGenerator()
 const tokenGenerator = new TokenGenerator()
 const userDatabase = new UserDatabase();
+const hashManager = new HashManager();
 
 export class UserBusiness {
   
   public createUser = async (input: UserInputDTO): Promise<string> => {
     try {
-      const { name, email, password } = input;
+      const { name, email, password, role } = input;
 
-      if (!name || !email || !password) {
+      if (!name || !email || !password || !role) {
         throw new CustomError(
           400,
           'Preencha os campos "name", "email" e "password"'
@@ -38,17 +41,24 @@ export class UserBusiness {
 
       const id: string = idGenerator.generateId()
 
+      const hashPassword = await hashManager.generateHash(password)
+      
       const user: User = {
         id,
         name,
         email,
-        password,
+        password: hashPassword,
+        role
       };
    
       await userDatabase.insertUser(user);
 
-      const token = tokenGenerator.generateToken(id)
-
+      const inputToken: AuthenticationData = {
+        id: user.id,
+        role: user.role
+      }
+      const token = tokenGenerator.generateToken(inputToken)
+    
       return token
     } catch (error: any) {
       throw new CustomError(400, error.message);
@@ -62,7 +72,7 @@ export class UserBusiness {
       if (!email || !password) {
         throw new CustomError(
           400,
-          'Preencha os campos"email" e "password"'
+          'Preencha os campos"email", "password" e "role"'
         );
       }
 
@@ -71,16 +81,21 @@ export class UserBusiness {
       }
 
       const user = await userDatabase.findUser(email);
+      const hashComparison = await hashManager.compareHash(password, user.password)
+
+      if(!hashComparison) {
+        throw new InvalidPassword()
+      }
 
       if (!user) {
         throw new UserNotFound()
       }
 
-      if(password !== user.password){ 
-        throw new InvalidPassword()
+      const payload: AuthenticationData = {
+        id: user.id,
+        role: user.role
       }
-
-      const token = tokenGenerator.generateToken(user.id)
+      const token = tokenGenerator.generateToken(payload)
      
       return token
 

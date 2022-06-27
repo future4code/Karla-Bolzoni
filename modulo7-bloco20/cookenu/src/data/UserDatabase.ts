@@ -42,6 +42,4 @@ export class UserDatabase extends BaseDatabase {
       throw new CustomError(404, error.message)
     }
   }
-
-
 }

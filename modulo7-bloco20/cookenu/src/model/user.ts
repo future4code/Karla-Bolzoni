@@ -3,12 +3,14 @@ export type User = {
    email: string
    password: string
    name: string
+   role: string
 }
 
 export interface UserInputDTO {
    name: string,
    email: string,
    password: string
+   role: string
 }
 
 export interface LoginInputDTO {
@@ -28,5 +30,6 @@ export interface EditUserInput {
 }
 
 export interface AuthenticationData {
-   id: string
+   id: string,
+   role: string
 }

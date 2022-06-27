@@ -8,12 +8,13 @@ export class UserController {
 
   public signup = async (req: Request, res: Response) => {
     try {
-      const { name, email, password } = req.body
+      const { name, email, password, role } = req.body
 
       const input: UserInputDTO = {
         name,
         email,
         password,
+        role
       }
 
       const token = await userBusiness.createUser(input);
