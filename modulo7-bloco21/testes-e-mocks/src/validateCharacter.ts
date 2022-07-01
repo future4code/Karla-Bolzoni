@@ -16,3 +16,13 @@ export const validateCharacter = (input: Character): boolean => {
 
   return true;
 };
+
+export interface ValidateCharacterOutput {
+  isValid: boolean,
+  errors: ValidateCharacterError[]
+}
+
+interface ValidateCharacterError {
+  key: string,
+  value: string
+}
